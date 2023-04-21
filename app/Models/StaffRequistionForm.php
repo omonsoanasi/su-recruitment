@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -53,5 +54,19 @@ class StaffRequistionForm extends Model
     public function bPartnerComment(): HasOne
     {
         return $this->hasOne(BusinessPartnerComment::class);
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class);
+    }
+
+    public function longlists(): HasMany
+    {
+        return $this->hasMany(ApplicationLongList::class, 'staff_requistion_forms_id', 'id' );
+    }
+    public function shortlists(): HasMany
+    {
+        return $this->hasMany(ApplicationShortList::class );
     }
 }

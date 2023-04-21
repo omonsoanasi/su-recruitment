@@ -1,4 +1,4 @@
-<x-hod-layout>
+<x-bpartner-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -13,7 +13,7 @@
                         <nav class = "flex px-5 py-3 text-gray-700  rounded-lg bg-gray-50 dark:bg-[#1E293B] " aria-label="Breadcrumb">
                             <ol class = "inline-flex items-center space-x-1 md:space-x-3">
                                 <li class = "inline-flex items-center">
-                                    <a href="{{ route('hod.index') }}" class = "inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                                    <a href="{{ route('bpartner.index') }}" class = "inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
                                         <svg class = "w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
                                         Home
                                     </a>
@@ -28,7 +28,156 @@
                         </nav>
                         <div class="bg-gray-100 p-4 rounded-md mt-4">
                             <h2 class="text-2xl font-bold mb-4">Cover Letter</h2>
-                            {!! $applicationinformation->coverletter !!}
+                            {!! $applicationshortlist->coverletter !!}
+                        </div>
+
+                        <div class="bg-gray-100 p-4 rounded-md mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-md">
+                                <h1 class="text-2xl font-bold mb-4">Personal Information</h1>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div>
+                                        <p class="font-bold">Name:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->title }} {{ $applicationshortlist->basicinfo->firstname }} {{ $applicationshortlist->basicinfo->middlename }} {{ $applicationshortlist->basicinfo->lastname }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Gender:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->gender }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Age:</p>
+                                        @php
+                                            $dob = new DateTime($applicationshortlist->basicinfo->dateofbirth);
+                                            $now = new DateTime();
+                                            $age = $dob->diff($now)->y;
+                                        @endphp
+                                        <p>{{ $age }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Nationality:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->nationality }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Country of Residence:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->countryofresidence }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Phone Number:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->phonenumber }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Email:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->email }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Address:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->postaladdress }} - {{ $applicationshortlist->basicinfo->postalcode }}, {{ $applicationshortlist->basicinfo->city }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Marital Status:</p>
+                                        <p>
+                                            @if($applicationshortlist->basicinfo->maritalstatus == 0)
+                                                Single
+                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 1)
+                                                Married
+                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 2)
+                                                Divorced
+                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 3)
+                                                Separated
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Applicant Type:</p>
+                                        <p>
+                                            @if($applicationshortlist->basicinfo->applicanttype == 1)
+                                                External
+                                            @else
+                                                Internal
+                                            @endif
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Related to Strathmore Staff:</p>
+                                        <p>
+                                            @if($applicationshortlist->basicinfo->relatedtostaff == 1)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif
+                                        </p>
+                                    </div>
+                                    @if($applicationshortlist->basicinfo->relatedtostaff == 1)
+                                        <div>
+                                            <p class="font-bold">Relationship Type:</p>
+                                            <p>{{ $applicationshortlist->basicinfo->relationshiptype }}</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold">Name of Staff:</p>
+                                            <p>{{ $applicationshortlist->basicinfo->nameofstaff }}</p>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <p class="font-bold">Current Salary:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->currsalary }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Expected Salary:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Physical Disability:</p>
+                                        <p>@if($applicationshortlist->basicinfo->disability == 1)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Expected Salary:</p>
+                                        <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-bold">Skills/Competence:</p>
+                                        <p>{!! $applicationshortlist->basicinfo->skillscompetence !!}</p>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <p class="font-bold">Strengths:</p>
+                                        <p>{!! $applicationshortlist->basicinfo->strengths !!}</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Ever Arrested:</p>
+                                        <p>
+                                            @if($applicationshortlist->basicinfo->lawviolation == 1)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif
+                                        </p>
+                                    </div>
+                                    @if($applicationshortlist->basicinfo->lawviolation == 1)
+                                        <div>
+                                            <p class="font-bold">Violation Description:</p>
+                                            <p>{!! $applicationshortlist->basicinfo->violationdesc !!} </p>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <p class="font-bold">Involved in Exploitation/Abuse:</p>
+                                        <p>
+                                            @if($applicationshortlist->basicinfo->exploitation == 1)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif
+                                        </p>
+                                    </div>
+                                    @if($applicationshortlist->basicinfo->exploitation == 1)
+                                        <div>
+                                            <p class="font-bold">Violation Description:</p>
+                                            <p>{!! $applicationshortlist->basicinfo->exploitationdesc !!} </p>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" id="personal">Personal Information</button>
@@ -39,16 +188,16 @@
                                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                                         <div>
                                             <p class="font-bold">Name:</p>
-                                            <p>{{ $applicationinformation->basicinfo->title }} {{ $applicationinformation->basicinfo->firstname }} {{ $applicationinformation->basicinfo->middlename }} {{ $applicationinformation->basicinfo->lastname }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->title }} {{ $applicationshortlist->basicinfo->firstname }} {{ $applicationshortlist->basicinfo->middlename }} {{ $applicationshortlist->basicinfo->lastname }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Gender:</p>
-                                            <p>{{ $applicationinformation->basicinfo->gender }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->gender }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Age:</p>
                                             @php
-                                                $dob = new DateTime($applicationinformation->basicinfo->dateofbirth);
+                                                $dob = new DateTime($applicationshortlist->basicinfo->dateofbirth);
                                                 $now = new DateTime();
                                                 $age = $dob->diff($now)->y;
                                             @endphp
@@ -56,34 +205,34 @@
                                         </div>
                                         <div>
                                             <p class="font-bold">Nationality:</p>
-                                            <p>{{ $applicationinformation->basicinfo->nationality }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->nationality }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Country of Residence:</p>
-                                            <p>{{ $applicationinformation->basicinfo->countryofresidence }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->countryofresidence }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Phone Number:</p>
-                                            <p>{{ $applicationinformation->basicinfo->phonenumber }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->phonenumber }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Email:</p>
-                                            <p>{{ $applicationinformation->basicinfo->email }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->email }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Address:</p>
-                                            <p>{{ $applicationinformation->basicinfo->postaladdress }} - {{ $applicationinformation->basicinfo->postalcode }}, {{ $applicationinformation->basicinfo->city }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->postaladdress }} - {{ $applicationshortlist->basicinfo->postalcode }}, {{ $applicationshortlist->basicinfo->city }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Marital Status:</p>
                                             <p>
-                                                @if($applicationinformation->basicinfo->maritalstatus == 0)
+                                                @if($applicationshortlist->basicinfo->maritalstatus == 0)
                                                     Single
-                                                @elseif($applicationinformation->basicinfo->maritalstatus == 1)
+                                                @elseif($applicationshortlist->basicinfo->maritalstatus == 1)
                                                     Married
-                                                @elseif($applicationinformation->basicinfo->maritalstatus == 2)
+                                                @elseif($applicationshortlist->basicinfo->maritalstatus == 2)
                                                     Divorced
-                                                @elseif($applicationinformation->basicinfo->maritalstatus == 3)
+                                                @elseif($applicationshortlist->basicinfo->maritalstatus == 3)
                                                     Separated
                                                 @endif
                                             </p>
@@ -91,7 +240,7 @@
                                         <div>
                                             <p class="font-bold">Applicant Type:</p>
                                             <p>
-                                                @if($applicationinformation->basicinfo->applicanttype == 1)
+                                                @if($applicationshortlist->basicinfo->applicanttype == 1)
                                                     External
                                                 @else
                                                     Internal
@@ -101,34 +250,34 @@
                                         <div>
                                             <p class="font-bold">Related to Strathmore Staff:</p>
                                             <p>
-                                                @if($applicationinformation->basicinfo->relatedtostaff == 1)
+                                                @if($applicationshortlist->basicinfo->relatedtostaff == 1)
                                                     Yes
                                                 @else
                                                     No
                                                 @endif
                                             </p>
                                         </div>
-                                        @if($applicationinformation->basicinfo->relatedtostaff == 1)
+                                        @if($applicationshortlist->basicinfo->relatedtostaff == 1)
                                             <div>
                                                 <p class="font-bold">Relationship Type:</p>
-                                                <p>{{ $applicationinformation->basicinfo->relationshiptype }}</p>
+                                                <p>{{ $applicationshortlist->basicinfo->relationshiptype }}</p>
                                             </div>
                                             <div>
                                                 <p class="font-bold">Name of Staff:</p>
-                                                <p>{{ $applicationinformation->basicinfo->nameofstaff }}</p>
+                                                <p>{{ $applicationshortlist->basicinfo->nameofstaff }}</p>
                                             </div>
                                         @endif
                                         <div>
                                             <p class="font-bold">Current Salary:</p>
-                                            <p>{{ $applicationinformation->basicinfo->currsalary }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->currsalary }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Expected Salary:</p>
-                                            <p>{{ $applicationinformation->basicinfo->expsalary }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Physical Disability:</p>
-                                            <p>@if($applicationinformation->basicinfo->disability == 1)
+                                            <p>@if($applicationshortlist->basicinfo->disability == 1)
                                                     Yes
                                                 @else
                                                     No
@@ -136,46 +285,46 @@
                                         </div>
                                         <div>
                                             <p class="font-bold">Expected Salary:</p>
-                                            <p>{{ $applicationinformation->basicinfo->expsalary }}</p>
+                                            <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
                                         </div>
                                         <div class="col-span-2">
                                             <p class="font-bold">Skills/Competence:</p>
-                                            <p>{!! $applicationinformation->basicinfo->skillscompetence !!}</p>
+                                            <p>{!! $applicationshortlist->basicinfo->skillscompetence !!}</p>
                                         </div>
                                         <div class="col-span-2">
                                             <p class="font-bold">Strengths:</p>
-                                            <p>{!! $applicationinformation->basicinfo->strengths !!}</p>
+                                            <p>{!! $applicationshortlist->basicinfo->strengths !!}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Ever Arrested:</p>
                                             <p>
-                                                @if($applicationinformation->basicinfo->lawviolation == 1)
+                                                @if($applicationshortlist->basicinfo->lawviolation == 1)
                                                     Yes
                                                 @else
                                                     No
                                                 @endif
                                             </p>
                                         </div>
-                                        @if($applicationinformation->basicinfo->lawviolation == 1)
+                                        @if($applicationshortlist->basicinfo->lawviolation == 1)
                                             <div>
                                                 <p class="font-bold">Violation Description:</p>
-                                                <p>{!! $applicationinformation->basicinfo->violationdesc !!} </p>
+                                                <p>{!! $applicationshortlist->basicinfo->violationdesc !!} </p>
                                             </div>
                                         @endif
                                         <div>
                                             <p class="font-bold">Involved in Exploitation/Abuse:</p>
                                             <p>
-                                                @if($applicationinformation->basicinfo->exploitation == 1)
+                                                @if($applicationshortlist->basicinfo->exploitation == 1)
                                                     Yes
                                                 @else
                                                     No
                                                 @endif
                                             </p>
                                         </div>
-                                        @if($applicationinformation->basicinfo->exploitation == 1)
+                                        @if($applicationshortlist->basicinfo->exploitation == 1)
                                             <div>
                                                 <p class="font-bold">Violation Description:</p>
-                                                <p>{!! $applicationinformation->basicinfo->exploitationdesc !!} </p>
+                                                <p>{!! $applicationshortlist->basicinfo->exploitationdesc !!} </p>
                                             </div>
                                         @endif
                                     </div>
@@ -186,7 +335,7 @@
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" id="academic">Academic Information</button>
                         <div class="collapse hidden bg-gray-200 p-4" id="academicdiv">
                             <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                                @if($applicationinformation->academicinfo)
+                                @if($applicationshortlist->academicinfo)
                                     <div class="bg-gray-100 p-4 rounded-md w-full">
                                         <h2 class="text-2xl font-bold mb-4">Academic Information</h2>
                                         <!-- component -->
@@ -218,7 +367,7 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            @foreach($applicationinformation->academicinfo as $aceinfo)
+                                                            @foreach($applicationshortlist->academicinfo as $aceinfo)
                                                                 <tr class="bg-gray-100 border-b">
                                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $aceinfo->qualificationtype->name }}</td>
                                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -253,7 +402,7 @@
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" id="workexperience">Work Experience</button>
                         <div class="collapse hidden bg-gray-200 p-4" id="workexperiencediv">
                             <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                                @if($applicationinformation->workexperience)
+                                @if($applicationshortlist->workexperience)
                                     <div class="bg-cyan-50 p-4 rounded-md w-full">
                                         <h2 class="text-2xl font-bold mb-4">Work Experience</h2>
                                         <!-- component -->
@@ -288,7 +437,7 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            @foreach($applicationinformation->workexperience as $workexperience)
+                                                            @foreach($applicationshortlist->workexperience as $workexperience)
                                                                 <tr class="bg-gray-100 border-b">
                                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $workexperience->jobtitle }}</td>
                                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -355,7 +504,7 @@
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" id="attachments">Attachments</button>
                         <div class="collapse hidden bg-gray-200 p-4" id="attachmentsdiv">
                             <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                                @if($applicationinformation->attachments)
+                                @if($applicationshortlist->attachments)
                                     <div class="bg-gray-100 p-4 rounded-md w-full">
                                         <h2 class="text-2xl font-bold mb-4">Attachments</h2>
                                         <!-- component -->
@@ -378,7 +527,7 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                            @foreach($applicationinformation->attachments as $attachment)
+                                                            @foreach($applicationshortlist->attachments as $attachment)
                                                                 <tr class="bg-gray-100 border-b">
                                                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $attachment->applicationattachment->name }}</td>
                                                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -404,7 +553,7 @@
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" id="declaration">Declaration</button>
                         <div class="collapse hidden bg-gray-200 p-4" id="declarationdiv">
                             <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                                @if($applicationinformation->declaration)
+                                @if($applicationshortlist->declaration)
                                     <div class="bg-cyan-50 p-4 rounded-md w-full">
                                         <h2 class="text-2xl font-bold mb-4">Declaration</h2>
                                         <!-- component -->
@@ -412,7 +561,7 @@
                                             <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
                                                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                                                     <div class="overflow-hidden">
-                                                        @if($applicationinformation->declaration->agree == 1)
+                                                        @if($applicationshortlist->declaration->agree == 1)
                                                             <span class="text-emerald-700 font-bold">Agreed to the Terms and Conditions</span>
                                                         @else
                                                             <span class="text-red-800 font-bold">Did not agree to the terms and conditions</span>
@@ -428,14 +577,15 @@
                             </div>
                         </div>
                     </div>
+
                     @role(['HoD','Business Partner'])
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('bpartner.applicationshortlist.store') }}">
                         @csrf
                         <fieldset>
                             <legend></legend>
                             <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
                                 <div class="flex">
-                                    <h6 class="w-full font-semibold flex-col">Longlist Candidate.</h6>
+                                    <h6 class="w-full font-semibold flex-col">Invite Candidate For Interview.</h6>
                                 </div>
                             </div>
                             <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
@@ -447,21 +597,23 @@
                                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
                                             <span class="text-red-500">*</span>
                                         </label>
-                                        <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="comment"  ></textarea>
+                                        <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters"></textarea>
                                         @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
                         <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                        <input name="staff_requistion_forms_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="">
-                        <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Candidate to Longlist</button>
+                        <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $applicationshortlist->id }}">
+                        <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationshortlist->user_id }}">
+                        <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $applicationshortlist->staff_requistion_form_id }}">
+                        <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Invite Candidate for Interview</button>
                     </form>
                     @endrole
                 </div>
             </div>
         </div>
     </div>
-</x-hod-layout>
+</x-bpartner-layout>
 
 

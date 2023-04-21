@@ -56,9 +56,9 @@
 
                         <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.index') }}">Dashboard</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.requistions.index') }}">Employee Requistion</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.pncapprovedrequistions.index') }}">Approved Requistion</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.requistions.index') }}">Employee Requisition</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.pncapprovedrequistions.index') }}">Approved Requisitions</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.applications.index') }}">Applications</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a>
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                                 <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
@@ -96,6 +96,61 @@
                     .catch( error => {
                         console.error( error );
                     } );
+
+                const accordionItems = document.querySelectorAll('.accordion-item');
+
+                accordionItems.forEach(item => {
+                    const button = item.querySelector('.accordion-button');
+
+                    button.addEventListener('click', () => {
+                        // Toggle the 'aria-expanded' attribute
+                        const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+                        button.setAttribute('aria-expanded', !expanded);
+
+                        // Toggle the visibility of the accordion content
+                        const content = item.querySelector('.accordion-collapse');
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                        }
+                    });
+                });
+
+                const personal = document.getElementById('personal');
+                const personaldiv = document.getElementById('personaldiv');
+
+                personal.addEventListener('click', () => {
+                    personaldiv.classList.toggle('hidden');
+                });
+
+                const academic = document.getElementById('academic');
+                const academicdiv = document.getElementById('academicdiv');
+
+                academic.addEventListener('click', () => {
+                    academicdiv.classList.toggle('hidden');
+                });
+
+                const workexperience = document.getElementById('workexperience');
+                const workexperiencediv = document.getElementById('workexperiencediv');
+
+                workexperience.addEventListener('click', () => {
+                    workexperiencediv.classList.toggle('hidden');
+                });
+
+                const attachments = document.getElementById('attachments');
+                const attachmentsdiv = document.getElementById('attachmentsdiv');
+
+                attachments.addEventListener('click', () => {
+                    attachmentsdiv.classList.toggle('hidden');
+                });
+
+                const declaration = document.getElementById('declaration');
+                const declarationdiv = document.getElementById('declarationdiv');
+
+                declaration.addEventListener('click', () => {
+                    declarationdiv.classList.toggle('hidden');
+                });
             </script>
     </body>
 </html>

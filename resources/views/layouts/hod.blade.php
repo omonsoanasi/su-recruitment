@@ -129,6 +129,42 @@
                     .catch( error => {
                         console.error( error );
                     } );
+
+                const personal = document.getElementById('personal');
+                const personaldiv = document.getElementById('personaldiv');
+
+                personal.addEventListener('click', () => {
+                    personaldiv.classList.toggle('hidden');
+                });
+
+                const academic = document.getElementById('academic');
+                const academicdiv = document.getElementById('academicdiv');
+
+                academic.addEventListener('click', () => {
+                    academicdiv.classList.toggle('hidden');
+                });
+
+                const workexperience = document.getElementById('workexperience');
+                const workexperiencediv = document.getElementById('workexperiencediv');
+
+                workexperience.addEventListener('click', () => {
+                    workexperiencediv.classList.toggle('hidden');
+                });
+
+                const attachments = document.getElementById('attachments');
+                const attachmentsdiv = document.getElementById('attachmentsdiv');
+
+                attachments.addEventListener('click', () => {
+                    attachmentsdiv.classList.toggle('hidden');
+                });
+
+                const declaration = document.getElementById('declaration');
+                const declarationdiv = document.getElementById('declarationdiv');
+
+                declaration.addEventListener('click', () => {
+                    declarationdiv.classList.toggle('hidden');
+                });
+
             </script>
     </body>
 </html>

@@ -11,6 +11,10 @@ use App\Http\Controllers\Admin\QualificationTypeController;
 use App\Http\Controllers\Admin\ReferralSourceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Bpartner\ApplicationDetailController;
+use App\Http\Controllers\Bpartner\ApplicationLongListController;
+use App\Http\Controllers\Bpartner\ApplicationShortListController;
+use App\Http\Controllers\Bpartner\ApplicationShowController;
 use App\Http\Controllers\Bpartner\BpartnerIndexController;
 use App\Http\Controllers\Bpartner\CommentController;
 use App\Http\Controllers\Bpartner\PnCApprovedRequistionController;
@@ -145,6 +149,10 @@ Route::group(['middleware' => ['auth', 'role:Business Partner']], function () {
         Route::resource('/comments', CommentController::class);
         Route::resource('/pncapprovedrequistions', PnCApprovedRequistionController::class);
         Route::resource('/publishedjobcomments', PublishedJobCommentController::class);
+        Route::resource('/applications', ApplicationDetailController::class);
+        Route::resource('/applicationshow', ApplicationShowController::class);
+        Route::resource('/applicationlonglist', ApplicationLongListController::class);
+        Route::resource('/applicationshortlist', ApplicationShortListController::class);
     });
 });
 
