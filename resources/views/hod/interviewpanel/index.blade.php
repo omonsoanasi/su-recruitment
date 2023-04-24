@@ -21,15 +21,15 @@
                                 <li>
                                     <div class = "flex items-center">
                                         <svg class = "w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
-                                        <a href="{{ route('hod.approvedrequistion.create') }}" class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Approved Requisitions</a>
+                                        <a href="{{ route('hod.interviewpanel.index') }}" class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Interview Panels</a>
                                     </div>
                                 </li>
                             </ol>
                         </nav>
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
-                            <div class="flex justify-end">
-                                <a href="{{ route('hod.staffrequistionform.create') }}" class="px-4 py-2 bg-green-800 hover:bg-green-300 rounded-md p-2">Create New Requisition</a>
-                            </div>
+{{--                            <div class="flex justify-end">--}}
+{{--                                <a href="{{ route('hod.interviewpanelform.create') }}" class="px-4 py-2 bg-green-800 hover:bg-green-300 rounded-md p-2">Create New Requisition</a>--}}
+{{--                            </div>--}}
                             <div class="p-6 text-gray-900">
                                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -53,32 +53,38 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($approvedrequistions as $approvedrequistion)
+                                        @foreach($ownrequistions as $interviewpanel)
                                             <tr class="border-b border-gray-200 dark:border-gray-700">
                                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                    {{ $approvedrequistion->jobtitle }}
+                                                    {{ $interviewpanel->jobtitle }}
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    {{ $approvedrequistion->jobType->name }}
+                                                    {{ $interviewpanel->jobType->name }}
                                                 </td>
                                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                    @if($approvedrequistion->advertise == 1)
+                                                    @if($interviewpanel->advertise == 1)
                                                         Yes
                                                     @else
                                                         No
                                                     @endif
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    @if($approvedrequistion->status == 3)
-                                                        <span class="text-emerald-600 font-semibold">New</span>
-                                                    @elseif($approvedrequistion->status == 4)
+                                                    @if($interviewpanel->status == 1)
+                                                        <span class="text-amber-400 font-semibold">Processing</span>
+                                                    @elseif($interviewpanel->status == 2)
+                                                        <span class="text-emerald-600 font-semibold">Finance Office</span>
+                                                    @elseif($interviewpanel->status == 3)
+                                                        <span class="text-emerald-600 font-semibold">PnC Executive Director</span>
+                                                    @elseif($interviewpanel->status == 4)
                                                         <span class="text-emerald-600 font-semibold">Published</span>
+                                                    @else
+                                                        <span class="text-cyan-600 font-semibold">New</span>
                                                     @endif
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2">
-                                                                <a href="{{ route('hod.applications.index', $approvedrequistion->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Recommended Candidates</a>
+                                                                <a href="{{ route('hod.interviewpanel.show', $interviewpanel->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">View Panelists</a>
                                                         </div>
                                                     </div>
                                                 </td>

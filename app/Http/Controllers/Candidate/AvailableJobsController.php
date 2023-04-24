@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Candidate;
 use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\BusinessPartnerComment;
+use App\Models\CandidateBasicInfo;
 use App\Models\Department;
 use App\Models\EDComment;
 use App\Models\FOComment;
@@ -56,7 +57,8 @@ class AvailableJobsController extends Controller
         $coverletters = Application::where('staff_requistion_form_id', $availablejob->id)
             ->where('user_id', $user_id)
             ->get();
-        return view('candidate.availablejobs.edit', compact('availablejob', 'coverletters'));
+        $basicinfo = CandidateBasicInfo::where('user_id',$user_id)->first();
+        return view('candidate.availablejobs.edit', compact('availablejob', 'coverletters', 'basicinfo'));
     }
 
     /**

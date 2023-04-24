@@ -18,6 +18,7 @@ class ApplicationShowController extends Controller
         $param = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1); // Extract the query parameter from the URL
 
         $receivedapplications = Application::where('staff_requistion_form_id', $param)->get(); // Retrieve the staff requisition form applications that match the specified ID
+
         return view('bpartner.applicationshow.index', compact('receivedapplications'));
     }
 
@@ -67,6 +68,8 @@ class ApplicationShowController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+//        $staffrequistionform->delete();
+
+//        return to_route('hod.staffrequistionform.index')->with('message','Requisition deleted');
     }
 }

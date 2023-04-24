@@ -62,8 +62,9 @@ class StaffRequisitionFormController extends Controller
             'personalqualities' => 'min:3',
             'other' => 'max:20055',
             'skill' => 'max:20055',
+            'onlineexam'=> 'required',
+            'technicalexam' => 'required'
         ]);
-
         StaffRequistionForm::create($validated);
 
         return to_route('hod.staffrequistionform.index')->with('message','Requisition submitted successfully');

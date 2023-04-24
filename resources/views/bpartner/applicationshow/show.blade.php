@@ -810,42 +810,56 @@
                         </div>
                     </div>
 
-                    @role(['HoD','Business Partner'])
-                    <form method="POST" action="{{ route('bpartner.applicationlonglist.store') }}">
-                        @csrf
-                        <fieldset>
-                            <legend></legend>
-                            <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
-                                <div class="flex">
-                                    <h6 class="w-full font-semibold flex-col">Longlist Candidate.</h6>
-                                </div>
+                    @if(count($longlisted)>0)
+                        <div class="bg-cyan-20 shadow-lg rounded-lg overflow-hidden mt-4">
+                            <p class="mb-2"><strong>Finance Officer Forwarding Comments</strong></p>
+                            <div class="flex w-full">
+                                @foreach($longlisted as $comment)
+                                    {!! $comment->comment !!}
+                                @endforeach
                             </div>
-                            <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
-                                <div class="flex">
-                                    <h6 class="w-full font-semibold flex-col">Enter your comments below.</h6>
-                                </div>
-                                <div class="-mx-3 md:flex mb-6">
-                                    <div class="md:w-full px-3">
-                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
-                                            <span class="text-red-500">*</span>
-                                        </label>
-                                        <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters">
-                                             @foreach($longlisted as $comment)
-                                                {!! $comment->comment !!}
-                                            @endforeach
-                                        </textarea>
-                                        @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+{{--                            @foreach($focomments as $focomment)--}}
+{{--                                <span> - Approved by: {{ $focomment->user->name }} </span><span> <strong> On: {{ \Carbon\Carbon::parse($focomment->updated_at)->format('Y-m-d') }}</strong> </span>--}}
+{{--                            @endforeach--}}
+                        </div>
+                    @else
+                        @role(['HoD','Business Partner'])
+                        <form method="POST" action="{{ route('bpartner.applicationlonglist.store') }}">
+                            @csrf
+                            <fieldset>
+                                <legend></legend>
+                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                    <div class="flex">
+                                        <h6 class="w-full font-semibold flex-col">Longlist Candidate.</h6>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                        <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $applicationshow->id }}">
-                        <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationshow->user_id }}">
-                        <input name="staff_requistion_forms_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $applicationshow->staff_requistion_form_id }}">
-                        <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Candidate to Long list</button>
-                    </form>
-                    @endrole
+                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                    <div class="flex">
+                                        <h6 class="w-full font-semibold flex-col">Enter your comments below.</h6>
+                                    </div>
+                                    <div class="-mx-3 md:flex mb-6">
+                                        <div class="md:w-full px-3">
+                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+                                                <span class="text-red-500">*</span>
+                                            </label>
+                                            <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters">
+                                             @foreach($longlisted as $comment)
+                                                    {!! $comment->comment !!}
+                                                @endforeach
+                                        </textarea>
+                                            @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
+                            <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $applicationshow->id }}">
+                            <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationshow->user_id }}">
+                            <input name="staff_requistion_forms_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $applicationshow->staff_requistion_form_id }}">
+                            <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Candidate to Long list</button>
+                        </form>
+                        @endrole
+                    @endif
                 </div>
             </div>
         </div>

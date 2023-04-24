@@ -34,6 +34,8 @@ class StaffRequistionForm extends Model
         'personalqualities',
         'other',
         'skill',
+        'technicalexam',
+        'onlineexam'
     ];
 
     public function jobType(): BelongsTo

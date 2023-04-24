@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('staff_requistion_forms', function (Blueprint $table) {
-            //
+            $table->boolean('technicalexam')->default(false);
+            $table->boolean('onlineexam')->default(false);
         });
     }
 

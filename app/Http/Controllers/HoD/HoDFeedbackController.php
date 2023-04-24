@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Bpartner;
+namespace App\Http\Controllers\HoD;
 
 use App\Http\Controllers\Controller;
-use App\Models\BusinessPartnerComment;
-use App\Models\StaffRequistionForm;
-use Illuminate\Http\RedirectResponse;
+use App\Models\HoDFeedback;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class HoDFeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,25 +27,21 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'comment' => 'required|max:255|min:3',
             'user_id' => 'max:255',
-            'staff_requistion_forms_id' => 'max:255',
+            'staff_requistion_form_id' => 'max:255',
+            'application_id' => 'required',
+            'applicant_id' => 'required',
         ]);
-        $formId = $validated['staff_requistion_forms_id'];
-        $staffFormRequistion = StaffRequistionForm::find($formId);
-        $staffFormRequistion->status = '1';
-        $staffFormRequistion->save();
-
-//        BusinessPartnerComment::create($validated);
-        $bpComment = BusinessPartnerComment::updateOrCreate(
-            ['staff_requistion_forms_id' => $validated['staff_requistion_forms_id']],
+        $hodfeedback = HoDFeedback::updateOrCreate(
+            ['staff_requistion_form_id' => $validated['staff_requistion_form_id'], 'application_id' => $validated['application_id'], 'applicant_id' => $validated['applicant_id']],
             ['comment' => $validated['comment'], 'user_id' =>$validated['user_id']]
         );
 
-        return to_route('bpartner.requistions.index')->with('message','Successfully updated');
+        return back()->with('message','Successfully updated');
     }
 
     /**

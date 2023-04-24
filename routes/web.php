@@ -34,7 +34,9 @@ use App\Http\Controllers\FinanceOfficer\FOIndexController;
 use App\Http\Controllers\FinanceOfficer\FORequistionController;
 use App\Http\Controllers\HoD\ApplicationInformationController;
 use App\Http\Controllers\HoD\ApprovedRequisitionController;
+use App\Http\Controllers\HoD\HoDFeedbackController;
 use App\Http\Controllers\HoD\HodIndexController;
+use App\Http\Controllers\HoD\InterviewPanelController;
 use App\Http\Controllers\HoD\ReceivedApplicationsContoller;
 use App\Http\Controllers\HoD\StaffRequisitionFormController;
 use App\Http\Controllers\PnCED\EDCommentController;
@@ -136,6 +138,8 @@ Route::group(['middleware' => ['auth', 'role:HoD']], function () {
         Route::resource('/approvedrequistion', ApprovedRequisitionController::class);
         Route::resource('/applications', ReceivedApplicationsContoller::class);
         Route::resource('/applicationinformation', ApplicationInformationController::class);
+        Route::resource('/interviewpanel', InterviewPanelController::class);
+        Route::resource('/hodfeedback', HoDFeedbackController::class);
     });
 });
 

@@ -68,7 +68,11 @@
                                                     {{ $applicationshow->created_at }}
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    {{ $applicationshow->longliststatus }}
+                                                    @if($applicationshow->longliststatus)
+                                                        Long-Listed
+                                                    @else
+                                                        Pending
+                                                    @endif
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     <div class="flex justify-end">

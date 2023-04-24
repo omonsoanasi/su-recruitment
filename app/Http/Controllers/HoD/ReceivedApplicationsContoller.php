@@ -4,6 +4,7 @@ namespace App\Http\Controllers\HoD;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\ApplicationShortList;
 use App\Models\BusinessPartnerComment;
 use App\Models\CampusLocation;
 use App\Models\Department;
@@ -28,8 +29,9 @@ class ReceivedApplicationsContoller extends Controller
         if (auth()->user()->id !== $staffrequistionform->user_id) {
             abort(403);
         }
-        $receivedapplications = Application::where('staff_requistion_form_id', $param)->get(); // Retrieve the staff requisition form applications that match the specified ID
-        return view('hod.applications.index', compact('receivedapplications'));
+
+        $applicationshortlists = ApplicationShortList::where('staff_requistion_form_id', $param)->get();
+        return view('hod.applications.index', compact('applicationshortlists'));
     }
 
     /**

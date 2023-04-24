@@ -37,7 +37,9 @@
                                             </svg>
                                             <span>{{ $availablejob->jobtitle }}</span>
                                         </div>
-                                        <span class="bg-green-500 rounded-full uppercase text-white text-sm px-4 py-1 font-bold shadow-xl">...</span>
+                                        @if(count($coverletters)>0)
+                                        <span class="bg-green-500 rounded-full uppercase text-white text-sm px-4 py-1 font-bold shadow-xl">Applicatiion Submitted</span>
+                                        @endif
                                     </div>
                                     <div class="text-sm text-gray-500 flex space-x-1 items-center mb-2">
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -45,6 +47,12 @@
                                         </svg>
                                         <span>{{ $availablejob->campuslocation ? $availablejob->campuslocation->name : 'No location set' }}</span>
                                     </div>
+                                    @if($basicinfo)
+                                    @else
+                                        <div class="bg-cyan-50 shadow-lg p-4 mt-4 text-sm text-gray-500 flex space-x-1 items-center mb-2">
+                                            <span class="text-gray-800">In order to be considered for this position, it is necessary to complete your Application Profile by filling out the required information. You can access the Application Profile by clicking on the following URL: <a href="{{ route('candidate.information.index') }}" class="underline"> Candidate Profile</a>.</span>
+                                        </div>
+                                    @endif
                                     <div class="grid grid-cols-3 gap-4">
                                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
                                             <div class="mr-4">
@@ -125,41 +133,55 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-4">
-                                        <div class="flex w-full justify-center">
-                                            <div class="p-4">
-                                                <h2 class="font-bold text-xl mb-2">Apply</h2>
-                                                    <form method="POST" action="{{ route('candidate.applications.store', $availablejob) }}">
-                                                        @csrf
-                                                        <fieldset>
-                                                            <legend>Cover Letter</legend>
-                                                            <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-3">
-                                                                <div class="flex">
-                                                                    <h6 class="w-full font-semibold flex-col">Cover Letter (limit 500 words)</h6>
-                                                                </div>
-                                                                <div class="-mx-3 md:flex mb-6">
-                                                                    <div class="md:w-full px-3">
-                                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
-                                                                            Write a Detailed Cover Letter <span class="text-red-500">*</span>
-                                                                        </label>
-                                                                        <textarea id="editor" name="coverletter" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="coverletter" >
-                                                                        @foreach($coverletters as $coverletter)
-                                                                                {!! $coverletter->coverletter !!}
-                                                                            @endforeach
-                                                                    </textarea>
-                                                                        @error('coverletter') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                        <input name="user_id" class="appearance-none block w-full bg-grey-l0ighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                                                        <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_form_id" type="hidden" value="{{ $availablejob->id }}">
-                                                        <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</button>
-                                                    </form>
-                                                <hr>
+                                    @if(count($coverletters)>0)
+                                        <div class="-mx-3 md:flex mb-6">
+                                            <div class="md:w-full px-3">
+                                                Application has been sent.
                                             </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        @if($basicinfo)
+                                        <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-4">
+                                            <div class="flex w-full justify-center">
+                                                <div class="p-4">
+                                                    <h2 class="font-bold text-xl mb-2">Apply</h2>
+                                                        <form method="POST" action="{{ route('candidate.applications.store', $availablejob) }}">
+                                                            @csrf
+                                                            <fieldset>
+                                                                <legend>Cover Letter</legend>
+                                                                <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-3">
+                                                                    <div class="flex">
+                                                                        <h6 class="w-full font-semibold flex-col">Cover Letter (limit 500 words)</h6>
+                                                                    </div>
+                                                                    <div class="-mx-3 md:flex mb-6">
+                                                                        <div class="md:w-full px-3">
+                                                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
+                                                                                Write a Detailed Cover Letter <span class="text-red-500">*</span>
+                                                                            </label>
+                                                                            <textarea id="editor" name="coverletter" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="coverletter" >
+                                                                            @foreach($coverletters as $coverletter)
+                                                                                    {!! $coverletter->coverletter !!}
+                                                                                @endforeach
+                                                                        </textarea>
+                                                                            @error('coverletter') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                            <input name="user_id" class="appearance-none block w-full bg-grey-l0ighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
+                                                            <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_form_id" type="hidden" value="{{ $availablejob->id }}">
+                                                            <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</button>
+                                                        </form>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @else
+                                            <div class="bg-cyan-50 shadow-lg p-4 mt-4">
+                                                <span class="text-gray-800">In order to be considered for this position, it is necessary to complete your Application Profile by filling out the required information. You can access the Application Profile by clicking on the following URL: <a href="{{ route('candidate.information.index') }}" class="underline"> Candidate Profile</a>.</span>
+                                            </div>
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>

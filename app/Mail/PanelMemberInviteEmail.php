@@ -10,21 +10,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CandidateInterviewInviteEmail extends Mailable
+class PanelMemberInviteEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-
-    public $applicantdata;
-    public $positiondetails;
     /**
      * Create a new message instance.
      */
-    public function __construct($applicantdata, $positiondetails)
-    {
-        $this->applicantdata = $applicantdata;
-        $this->positiondetails = $positiondetails;
+    public $validated;
 
+    public function __construct($validated)
+    {
+        $this->validated = $validated;
     }
 
     /**
@@ -34,7 +31,7 @@ class CandidateInterviewInviteEmail extends Mailable
     {
         return new Envelope(
             from: new Address('su-rc-app@strathmore.edu'),
-            subject: 'Strathmore University People and Culture Department',
+            subject: 'Panel Member Invite Email',
         );
     }
 
@@ -44,7 +41,7 @@ class CandidateInterviewInviteEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.candidate.interviewinvitation',
+            view: 'view.name',
         );
     }
 

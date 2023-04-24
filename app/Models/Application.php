@@ -58,4 +58,5 @@ class Application extends Model
     {
         return $this->belongsTo(ApplicationLongList::class, 'user_id', 'applicant_id');
     }
+
 }

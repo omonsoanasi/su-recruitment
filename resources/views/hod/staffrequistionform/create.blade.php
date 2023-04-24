@@ -256,6 +256,30 @@
                                                 </div>
                                             </div>
                                         </fieldset>
+                                        <fieldset>
+                                            <legend>Technical Exam/Interview Details</legend>
+                                            <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                <div class="-mx-3 md:flex mb-6">
+                                                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="technicalexam">
+                                                            Technical Exam
+                                                        </label>
+                                                        <input type="hidden" name="technicalexam" value="0" />
+                                                        <input name="technicalexam" type="checkbox" value="1" {{ old('technicalexam') == 1 ? 'checked' : '' }}>
+                                                        @error('technicalexam') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                    </div>
+                                                    <div class="md:w-1/2 px-3">
+                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="onlineexam">
+                                                            Online Exam
+                                                        </label>
+                                                        <input type="hidden" name="onlineexam" value="0" />
+                                                        <input name="onlineexam" type="checkbox" value="1" {{ old('onlineexam') == 1 ? 'checked' : '' }}>
+                                                        @error('onlineexam') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
                                     </div>
                                     <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
                                     <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Request</button>
