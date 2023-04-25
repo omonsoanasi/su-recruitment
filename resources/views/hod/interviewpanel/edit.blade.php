@@ -28,7 +28,8 @@
                         </nav>
                         <div class="bg-slate-200 overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 text-gray-900">
-                                <form method="POST" action="{{ route('hod.interviewpanel.store') }}">
+                                <form method="POST" action="{{ route('hod.interviewpanel.update', $interviewpanel) }}">
+                                    @method('PUT')
                                     @csrf
                                     <!-- component -->
                                     <div>
@@ -94,11 +95,27 @@
                                                         @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                                     </div>
                                                 </div>
+                                                <div class="-mx-3 md:flex mb-6">
+                                                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="interviewnotes">
+                                                            Interview Time
+                                                        </label>
+                                                        <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ $interviewpanel->interviewtime ?? old('interviewtime') }}">
+                                                        @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                    </div>
+                                                    <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="approvedsalary">
+                                                            Interview Location
+                                                        </label>
+                                                        <input name="interviewlocation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewlocation" type="text" placeholder="Admin Boardroom " value="{{ $interviewpanel->interviewlocation ?? old('interviewlocation') }}">
+                                                        @error('interviewlocation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                    </div>
+                                                </div>
                                             </div>
                                         </fieldset>
                                     </div>
                                     <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                                    <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Panelist</button>
+                                    <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
                                 </form>
                             </div>
                         </div>

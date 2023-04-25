@@ -73,23 +73,39 @@
                                                             @error('panelistphonenumber') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                                         </div>
                                                     </div>
-                                            <div class="-mx-3 md:flex mb-6">
-                                                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="interviewnotes">
-                                                        Interview Note
-                                                    </label>
-                                                    <input name="interviewnotes" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewnotes" type="text" placeholder="short interview note " value="{{ old('interviewnotes') }}">
-                                                    <p class="text-grey-dark text-xs italic">Short note to be attached on the email sent to the panelist</p>
-                                                    @error('interviewnotes') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                                </div>
-                                                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="approvedsalary">
-                                                        Interview Date
-                                                    </label>
-                                                    <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="start date... " value="{{ old('interviewdate') }}">
-                                                    @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                                </div>
-                                            </div>
+                                                    <div class="-mx-3 md:flex mb-6">
+                                                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="interviewnotes">
+                                                                Interview Note
+                                                            </label>
+                                                            <input name="interviewnotes" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewnotes" type="text" placeholder="short interview note " value="{{ old('interviewnotes') }}">
+                                                            <p class="text-grey-dark text-xs italic">Short note to be attached on the email sent to the panelist</p>
+                                                            @error('interviewnotes') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                        </div>
+                                                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="approvedsalary">
+                                                                Interview Date
+                                                            </label>
+                                                            <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="start date... " value="{{ old('interviewdate') }}">
+                                                            @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="-mx-3 md:flex mb-2">
+                                                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
+                                                                Time
+                                                            </label>
+                                                            <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ old('interviewtime') }}">
+                                                            @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                        </div>
+                                                        <div class="md:w-1/2 px-3">
+                                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
+                                                                Location
+                                                            </label>
+                                                            <input name="interviewlocation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewlocation" type="text" placeholder="Admin Boardroom" value="{{ old('interviewlocation') }}">
+                                                            @error('interviewlocation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                        </div>
+                                                    </div>
                                         </div>
                                         </fieldset>
                                     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Invitation to Interview</title>
+    <title>[CHANGED] Invitation to Interview</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -10,7 +10,7 @@
     <tr>
         <td style="padding: 20px;">
             <img style="display: block; margin: 0 auto;" src="{{ asset('bg-logo/logo.png') }}" alt="Logo Image">
-            <h1 style="font-size: 24px; margin: 0;">Invitation to Interview</h1>
+            <h1 style="font-size: 24px; margin: 0;">[CHANGED] Invitation to Interview</h1>
             <p style="margin: 20px 0;">Dear {{ $panelistname }},</p>
             <p style="margin: 20px 0;">We would like to invite you to be a panelist for an interview for the <strong>{{ $staffrequistionform->jobtitle }}</strong> position at our University. The interview will be held on <strong>{{ $interviewdate }}</strong> at <strong>{{ $interviewtime }}</strong> at our office located at <strong>{{ $interviewlocation }}</strong>.</p>
             <p style="margin: 20px 0;">Please let us know if you are available for this interview by clicking on the button below:</p>

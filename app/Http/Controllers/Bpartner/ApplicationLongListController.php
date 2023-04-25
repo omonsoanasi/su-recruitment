@@ -58,7 +58,8 @@ class ApplicationLongListController extends Controller
     public function show(Application $applicationlonglist)
     {
         $shortlisted = ApplicationShortList::where('applicant_id', $applicationlonglist->user_id)->where('application_id', $applicationlonglist->id)->get();
-        return view('bpartner.applicationlonglist.show', compact('applicationlonglist', 'shortlisted'));
+        $longlistcomments = ApplicationLongList::where('applicant_id',$applicationlonglist->user_id)->where('application_id', $applicationlonglist->id)->get();
+        return view('bpartner.applicationlonglist.show', compact('applicationlonglist', 'shortlisted', 'longlistcomments'));
     }
 
     /**

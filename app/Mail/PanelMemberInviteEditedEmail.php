@@ -10,13 +10,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PanelMemberInviteEmail extends Mailable
+class PanelMemberInviteEditedEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
+
     public $validated;
     public $staffrequistionform;
 
@@ -40,7 +41,7 @@ class PanelMemberInviteEmail extends Mailable
     {
         return new Envelope(
             from: new Address('su-rc-app@strathmore.edu'),
-            subject: 'Panel Member Invite Email',
+            subject: '[CHANGED] Panel Member Invite Email',
         );
     }
 
@@ -50,7 +51,7 @@ class PanelMemberInviteEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.panelmembers.panelinvitation',
+            view: 'emails.panelmembers.panelinvitationedited',
             with: [
                 'panelistname' => $this->panelistname,
                 'interviewdate' => $this->interviewdate,

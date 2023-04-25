@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\HoD;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PanelMemberCancelEmail;
 use App\Mail\PanelMemberInvite;
+use App\Mail\PanelMemberInviteEditedEmail;
 use App\Mail\PanelMemberInviteEmail;
 use App\Models\InterviewPanel;
 use App\Models\StaffRequistionForm;
@@ -43,18 +45,20 @@ class InterviewPanelController extends Controller
             'user_id' => 'max:255',
             'staff_requistion_form_id'=> 'required',
             'panelistname' => 'required',
-//            'panelistemail' => 'required|email|unique:interview_panels,panelistemail',
             'panelistemail' => 'required|email',
             'panelistphonenumber' => 'required',
             'interviewnotes' => 'required',
             'interviewdate' => 'required',
+            'interviewtime' => 'required',
+            'interviewlocation' => 'required',
         ]);
 
         $toemail = $validated['panelistemail'];
+        $staffrequistionform = StaffRequistionForm::where('id',$validated['staff_requistion_form_id'])->first();
 
         InterviewPanel::create($validated);
 
-//        Mail::to($toemail)->send(new PanelMemberInviteEmail($validated));
+        Mail::to($toemail)->send(new PanelMemberInviteEmail($validated, $staffrequistionform));
 
         return to_route('hod.interviewpanel.index')->with('message','Panelist Added Successfully');
     }
@@ -81,9 +85,30 @@ class InterviewPanelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, InterviewPanel  $interviewpanel)
     {
-        //
+        $validated = $request->validate([
+            'user_id' => 'max:255',
+            'staff_requistion_form_id'=> 'required',
+            'panelistname' => 'required',
+//            'panelistemail' => 'required|email|unique:interview_panels,panelistemail',
+            'panelistemail' => 'required|email',
+            'panelistphonenumber' => 'required',
+            'interviewnotes' => 'required',
+            'interviewdate' => 'required',
+            'interviewtime' => 'required',
+            'interviewlocation' => 'required',
+        ]);
+
+        $toemail = $validated['panelistemail'];
+
+        $staffrequistionform = StaffRequistionForm::where('id',$validated['staff_requistion_form_id'])->first();
+
+        $interviewpanel->update($validated);
+
+        Mail::to($toemail)->send(new PanelMemberInviteEditedEmail($validated, $staffrequistionform));
+
+        return to_route('hod.interviewpanel.index')->with('message','Information updated Successfully');
     }
 
     /**
@@ -95,7 +120,10 @@ class InterviewPanelController extends Controller
         if (auth()->user()->id !== $interviewpanel->user_id) {
             abort(403);
         }
+
         $interviewpanel->delete();
+        $staffrequistionform = StaffRequistionForm::where('id',$interviewpanel->staff_requistion_form_id)->first();
+        Mail::to($interviewpanel->panelistemail)->send(new PanelMemberCancelEmail($interviewpanel, $staffrequistionform));
 
         return to_route('hod.interviewpanel.index')->with('message','Panelist removed successfully');
     }

@@ -413,7 +413,21 @@
                             @endif
                         </div>
                     </div>
+                    @foreach($shortlistcomments as $shortlistcomment)
+                        <div class="bg-cyan-50 p-4 rounded-md mt-4">
+                            <h2 class="text-2xl font-bold mb-4">Shortlisting Comments</h2>
+                            {!! $shortlistcomment->comment !!}
+                        </div>
+                    @endforeach
                     @role(['HoD','Business Partner'])
+                    @if(count($hodfeedback)>0)
+                        @foreach($hodfeedback as $feedback)
+                        <div class="bg-green-400 p-4 rounded-md mt-4">
+                            <h2 class="text-2xl font-bold mb-4">Your Feedback</h2>
+                            {!! $feedback->comment !!}
+                        </div>
+                        @endforeach
+                    @else
                     <form method="POST" action="{{ route('hod.hodfeedback.store') }}">
                         @csrf
                         <fieldset>
@@ -444,6 +458,7 @@
                         <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationinformation->user_id }}">
                         <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send Comments</button>
                     </form>
+                    @endif
                     @endrole
                 </div>
             </div>

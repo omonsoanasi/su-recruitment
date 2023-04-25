@@ -1,6 +1,19 @@
+job type
+(academic, management, adminstration, supervisory)
+--add shortlisting comments on the hod view 
+
 Add active flag on the jobs being applied. 
 
 academic details qualification 1st class 2nd class etc
 
 if user has not accepted the terms and conditions, applications should not be sent
+
+interview module
+-job type
+-interview question
+
+interviewer module
+-view applicants information
+-access interview questions 
+-give marks and suggestions
 

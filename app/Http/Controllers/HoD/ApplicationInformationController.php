@@ -4,8 +4,11 @@ namespace App\Http\Controllers\HoD;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application;
+use App\Models\ApplicationShortList;
+use App\Models\HoDFeedback;
 use App\Models\StaffRequistionForm;
 use Illuminate\Http\Request;
+use function Psy\sh;
 
 class ApplicationInformationController extends Controller
 {
@@ -44,7 +47,9 @@ class ApplicationInformationController extends Controller
         if (auth()->user()->id !== $staffrequistionform->user_id) {
             abort(403);
         }
-        return view('hod.applicationinformation.show', compact('applicationinformation'));
+        $hodfeedback = HoDFeedback::where('user_id',$staffrequistionform->user_id)->where('application_id', $applicationinformation->id)->get();
+        $shortlistcomments = ApplicationShortList::where('application_id',$applicationinformation->id)->get();
+        return view('hod.applicationinformation.show', compact('applicationinformation', 'hodfeedback', 'shortlistcomments'));
     }
 
     /**

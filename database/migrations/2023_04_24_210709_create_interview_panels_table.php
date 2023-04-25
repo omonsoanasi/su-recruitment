@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('panelistphonenumber');
             $table->string('interviewdate');
             $table->text('interviewnotes');
+            $table->string('interviewtime');
+            $table->text('interviewlocation');
             $table->softDeletes();
             $table->timestamps();
         });

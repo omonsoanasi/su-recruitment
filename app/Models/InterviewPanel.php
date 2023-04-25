@@ -17,6 +17,8 @@ class InterviewPanel extends Model
         'panelistemail',
         'panelistphonenumber',
         'interviewdate',
-        'interviewnotes'
+        'interviewnotes',
+        'interviewtime',
+        'interviewlocation'
     ];
 }

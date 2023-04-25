@@ -6,8 +6,10 @@ use App\Http\Controllers\Candidate\BasicInfoController;
 use App\Http\Controllers\Controller;
 use App\Mail\CandidateInterviewInviteEmail;
 use App\Models\Application;
+use App\Models\ApplicationLongList;
 use App\Models\ApplicationShortList;
 use App\Models\CandidateBasicInfo;
+use App\Models\HoDFeedback;
 use App\Models\StaffRequistionForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -65,7 +67,10 @@ class ApplicationShortListController extends Controller
      */
     public function show(Application $applicationshortlist)
     {
-        return view('bpartner.applicationshortlist.show', compact('applicationshortlist'));
+        $longlistcomments = ApplicationLongList::where('applicant_id',$applicationshortlist->user_id)->where('application_id', $applicationshortlist->id)->get();
+        $shortlistcomments = ApplicationShortList::where('applicant_id',$applicationshortlist->user_id)->where('application_id', $applicationshortlist->id)->get();
+        $hodcomments = HoDFeedback::where('applicant_id',$applicationshortlist->user_id)->where('application_id', $applicationshortlist->id)->get();
+        return view('bpartner.applicationshortlist.show', compact('applicationshortlist', 'longlistcomments', 'shortlistcomments','hodcomments'));
     }
 
     /**
