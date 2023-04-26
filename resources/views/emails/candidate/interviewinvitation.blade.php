@@ -12,11 +12,13 @@
             <img style="display: block; margin: 0 auto;" src="{{ asset('bg-logo/logo.png') }}" alt="Logo Image">
             <h1 style="font-size: 24px; margin: 0;">Invitation to Interview</h1>
             <p style="margin: 20px 0;">Dear {{ $applicantdata->title }} {{ $applicantdata->lastname }},</p>
-            <p style="margin: 20px 0;">We would like to invite you for an interview for the <strong>{{ $positiondetails->jobtitle }}</strong> position at our company. The interview will be held on [Date] at [Time] at our office located at [Address].</p>
+            <p style="margin: 20px 0;">We would like to invite you for an interview for the <strong>{{ $positiondetails->jobtitle }}</strong> position at our company. The interview will be held on <strong>{{ $interviewdate }}</strong> at <strong>{{ $interviewtime }}</strong> at <strong>{{ $interviewlocation }}</strong>.</p>
             <p style="margin: 20px 0;">Please let us know if you are available for this interview by clicking on the button below:</p>
-            <p style="text-align: center; margin: 30px 0;"><a href="[Interview Confirmation Link]" style="display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #fff; text-decoration: none; border-radius: 5px;">Confirm Interview</a></p>
+            <p style="text-align: center; margin: 30px 0;"><a href="{{ route('candidate.interviewresponse.edit', $interviewresponse) }}" style="display: inline-block; padding: 10px 20px; background-color: #4caf50; color: #fff; text-decoration: none; border-radius: 5px;">Confirm Interview</a></p>
             <p style="margin: 20px 0;">If you have any questions or concerns, please feel free to contact us.</p>
             <p style="margin: 20px 0;">Thank you for considering this opportunity.</p>
+            <h1 style="margin: 20px 0;"><strong>Note:</strong>{{ $extrarequirements }}</h1>
+
             <p style="margin: 20px 0;">Best regards,</p>
             <p style="margin: 20px 0;">People and Culture Department<br>Strathmore University</p>
         </td>

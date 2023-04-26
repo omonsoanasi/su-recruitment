@@ -17,13 +17,22 @@ class CandidateInterviewInviteEmail extends Mailable
 
     public $applicantdata;
     public $positiondetails;
+
+    public $validated;
+
+    public $interviewresponse;
     /**
      * Create a new message instance.
      */
-    public function __construct($applicantdata, $positiondetails)
+    public function __construct($applicantdata, $positiondetails, $validated, $interviewresponse)
     {
         $this->applicantdata = $applicantdata;
         $this->positiondetails = $positiondetails;
+        $this->interviewresponse = $interviewresponse;
+        $this->extrarequirements = $validated['extrarequirements'];
+        $this->interviewdate = $validated['interviewdate'];
+        $this->interviewtime = $validated['interviewtime'];
+        $this->interviewlocation = $validated['interviewlocation'];
 
     }
 
@@ -45,6 +54,12 @@ class CandidateInterviewInviteEmail extends Mailable
     {
         return new Content(
             view: 'emails.candidate.interviewinvitation',
+            with: [
+                'extrarequirements' => $this->extrarequirements,
+                'interviewdate' => $this->interviewdate,
+                'interviewtime' => $this->interviewtime,
+                'interviewlocation' => $this->interviewlocation,
+            ],
         );
     }
 

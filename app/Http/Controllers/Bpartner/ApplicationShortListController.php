@@ -49,9 +49,9 @@ class ApplicationShortListController extends Controller
             'staff_requistion_form_id' => 'max:255',
         ]);
 
-        $positiondetails = StaffRequistionForm::where('id',$request->staff_requistion_form_id)->first();
-        $applicantdata = CandidateBasicInfo::where('user_id',$request->applicant_id)->first();
-        Mail::to($applicantdata->email)->send(new CandidateInterviewInviteEmail($applicantdata, $positiondetails));
+//        $positiondetails = StaffRequistionForm::where('id',$request->staff_requistion_form_id)->first();
+//        $applicantdata = CandidateBasicInfo::where('user_id',$request->applicant_id)->first();
+//        Mail::to($applicantdata->email)->send(new CandidateInterviewInviteEmail($applicantdata, $positiondetails));
 
         //create or update the comment for shortlisting the candidate
         $shortlistcandidate = ApplicationShortList::updateOrCreate(
@@ -59,7 +59,7 @@ class ApplicationShortListController extends Controller
             ['comment' => $validated['comment'], 'user_id' =>$validated['user_id']]
         );
 
-        return back()->with('message','Added to short list');
+        return back()->with('message','Invitation sent');
     }
 
     /**

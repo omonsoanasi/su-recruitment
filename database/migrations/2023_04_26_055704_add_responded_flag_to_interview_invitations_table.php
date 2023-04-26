@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('interview_invitations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('interview_invitations', function (Blueprint $table) {
+            $table->boolean('responded')->default(false);
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('interview_invitations');
+        Schema::table('interview_invitations', function (Blueprint $table) {
+            //
+        });
     }
 };

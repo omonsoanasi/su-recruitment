@@ -28,7 +28,7 @@
                         </nav>
                         <div class="bg-gray-100 p-4 rounded-md mt-4">
                             <h2 class="text-2xl font-bold mb-4">Cover Letter</h2>
-                            {!! $applicationshortlist->coverletter !!}
+                            {!! $interviewlist->coverletter !!}
                         </div>
 
                         <div class="bg-gray-100 p-4 rounded-md mt-4">
@@ -37,16 +37,16 @@
                                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                                     <div>
                                         <p class="font-bold">Name:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->title }} {{ $applicationshortlist->basicinfo->firstname }} {{ $applicationshortlist->basicinfo->middlename }} {{ $applicationshortlist->basicinfo->lastname }}</p>
+                                        <p>{{ $interviewlist->basicinfo->title }} {{ $interviewlist->basicinfo->firstname }} {{ $interviewlist->basicinfo->middlename }} {{ $interviewlist->basicinfo->lastname }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Gender:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->gender }}</p>
+                                        <p>{{ $interviewlist->basicinfo->gender }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Age:</p>
                                         @php
-                                            $dob = new DateTime($applicationshortlist->basicinfo->dateofbirth);
+                                            $dob = new DateTime($interviewlist->basicinfo->dateofbirth);
                                             $now = new DateTime();
                                             $age = $dob->diff($now)->y;
                                         @endphp
@@ -54,34 +54,34 @@
                                     </div>
                                     <div>
                                         <p class="font-bold">Nationality:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->nationality }}</p>
+                                        <p>{{ $interviewlist->basicinfo->nationality }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Country of Residence:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->countryofresidence }}</p>
+                                        <p>{{ $interviewlist->basicinfo->countryofresidence }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Phone Number:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->phonenumber }}</p>
+                                        <p>{{ $interviewlist->basicinfo->phonenumber }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Email:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->email }}</p>
+                                        <p>{{ $interviewlist->basicinfo->email }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Address:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->postaladdress }} - {{ $applicationshortlist->basicinfo->postalcode }}, {{ $applicationshortlist->basicinfo->city }}</p>
+                                        <p>{{ $interviewlist->basicinfo->postaladdress }} - {{ $interviewlist->basicinfo->postalcode }}, {{ $interviewlist->basicinfo->city }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Marital Status:</p>
                                         <p>
-                                            @if($applicationshortlist->basicinfo->maritalstatus == 0)
+                                            @if($interviewlist->basicinfo->maritalstatus == 0)
                                                 Single
-                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 1)
+                                            @elseif($interviewlist->basicinfo->maritalstatus == 1)
                                                 Married
-                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 2)
+                                            @elseif($interviewlist->basicinfo->maritalstatus == 2)
                                                 Divorced
-                                            @elseif($applicationshortlist->basicinfo->maritalstatus == 3)
+                                            @elseif($interviewlist->basicinfo->maritalstatus == 3)
                                                 Separated
                                             @endif
                                         </p>
@@ -89,7 +89,7 @@
                                     <div>
                                         <p class="font-bold">Applicant Type:</p>
                                         <p>
-                                            @if($applicationshortlist->basicinfo->applicanttype == 1)
+                                            @if($interviewlist->basicinfo->applicanttype == 1)
                                                 External
                                             @else
                                                 Internal
@@ -99,34 +99,34 @@
                                     <div>
                                         <p class="font-bold">Related to Strathmore Staff:</p>
                                         <p>
-                                            @if($applicationshortlist->basicinfo->relatedtostaff == 1)
+                                            @if($interviewlist->basicinfo->relatedtostaff == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($applicationshortlist->basicinfo->relatedtostaff == 1)
+                                    @if($interviewlist->basicinfo->relatedtostaff == 1)
                                         <div>
                                             <p class="font-bold">Relationship Type:</p>
-                                            <p>{{ $applicationshortlist->basicinfo->relationshiptype }}</p>
+                                            <p>{{ $interviewlist->basicinfo->relationshiptype }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Name of Staff:</p>
-                                            <p>{{ $applicationshortlist->basicinfo->nameofstaff }}</p>
+                                            <p>{{ $interviewlist->basicinfo->nameofstaff }}</p>
                                         </div>
                                     @endif
                                     <div>
                                         <p class="font-bold">Current Salary:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->currsalary }}</p>
+                                        <p>{{ $interviewlist->basicinfo->currsalary }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Expected Salary:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
+                                        <p>{{ $interviewlist->basicinfo->expsalary }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Physical Disability:</p>
-                                        <p>@if($applicationshortlist->basicinfo->disability == 1)
+                                        <p>@if($interviewlist->basicinfo->disability == 1)
                                                 Yes
                                             @else
                                                 No
@@ -134,53 +134,53 @@
                                     </div>
                                     <div>
                                         <p class="font-bold">Expected Salary:</p>
-                                        <p>{{ $applicationshortlist->basicinfo->expsalary }}</p>
+                                        <p>{{ $interviewlist->basicinfo->expsalary }}</p>
                                     </div>
                                     <div class="col-span-2">
                                         <p class="font-bold">Skills/Competence:</p>
-                                        <p>{!! $applicationshortlist->basicinfo->skillscompetence !!}</p>
+                                        <p>{!! $interviewlist->basicinfo->skillscompetence !!}</p>
                                     </div>
                                     <div class="col-span-2">
                                         <p class="font-bold">Strengths:</p>
-                                        <p>{!! $applicationshortlist->basicinfo->strengths !!}</p>
+                                        <p>{!! $interviewlist->basicinfo->strengths !!}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Ever Arrested:</p>
                                         <p>
-                                            @if($applicationshortlist->basicinfo->lawviolation == 1)
+                                            @if($interviewlist->basicinfo->lawviolation == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($applicationshortlist->basicinfo->lawviolation == 1)
+                                    @if($interviewlist->basicinfo->lawviolation == 1)
                                         <div>
                                             <p class="font-bold">Violation Description:</p>
-                                            <p>{!! $applicationshortlist->basicinfo->violationdesc !!} </p>
+                                            <p>{!! $interviewlist->basicinfo->violationdesc !!} </p>
                                         </div>
                                     @endif
                                     <div>
                                         <p class="font-bold">Involved in Exploitation/Abuse:</p>
                                         <p>
-                                            @if($applicationshortlist->basicinfo->exploitation == 1)
+                                            @if($interviewlist->basicinfo->exploitation == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($applicationshortlist->basicinfo->exploitation == 1)
+                                    @if($interviewlist->basicinfo->exploitation == 1)
                                         <div>
                                             <p class="font-bold">Violation Description:</p>
-                                            <p>{!! $applicationshortlist->basicinfo->exploitationdesc !!} </p>
+                                            <p>{!! $interviewlist->basicinfo->exploitationdesc !!} </p>
                                         </div>
                                     @endif
                                 </div>
                             </div>
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($applicationshortlist->academicinfo)
+                            @if($interviewlist->academicinfo)
                                 <div class="bg-gray-100 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Academic Information</h2>
                                     <!-- component -->
@@ -212,7 +212,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($applicationshortlist->academicinfo as $aceinfo)
+                                                        @foreach($interviewlist->academicinfo as $aceinfo)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $aceinfo->qualificationtype->name }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -243,7 +243,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($applicationshortlist->workexperience)
+                            @if($interviewlist->workexperience)
                                 <div class="bg-cyan-50 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Work Experience</h2>
                                     <!-- component -->
@@ -278,7 +278,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($applicationshortlist->workexperience as $workexperience)
+                                                        @foreach($interviewlist->workexperience as $workexperience)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $workexperience->jobtitle }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -341,7 +341,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($applicationshortlist->attachments)
+                            @if($interviewlist->attachments)
                                 <div class="bg-gray-100 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Attachments</h2>
                                     <!-- component -->
@@ -364,7 +364,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($applicationshortlist->attachments as $attachment)
+                                                        @foreach($interviewlist->attachments as $attachment)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $attachment->applicationattachment->name }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -386,7 +386,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($applicationshortlist->declaration)
+                            @if($interviewlist->declaration)
                                 <div class="bg-cyan-50 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Declaration</h2>
                                     <!-- component -->
@@ -394,7 +394,7 @@
                                         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
                                             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                                                 <div class="overflow-hidden">
-                                                    @if($applicationshortlist->declaration->agree == 1)
+                                                    @if($interviewlist->declaration->agree == 1)
                                                         <span class="text-emerald-700 font-bold">Agreed to the Terms and Conditions</span>
                                                     @else
                                                         <span class="text-red-800 font-bold">Did not agree to the terms and conditions</span>
@@ -436,13 +436,13 @@
                     @endif
 
                     @if(count($shortlistcomments)>0 && count($hodcomments)>0)
-                        <form method="POST" action="{{ route('bpartner.interviewinvitation.store') }}">
+                        <form method="POST" action="{{ route('bpartner.candidateoffer.store') }}">
                             @csrf
                             <fieldset>
                                 <legend></legend>
                                 <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
                                     <div class="flex">
-                                        <h6 class="w-full font-semibold flex-col">Invite Candidate For Interview.</h6>
+                                        <h6 class="w-full font-semibold flex-col">Interview Notes.</h6>
                                     </div>
                                 </div>
                                 <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
@@ -462,21 +462,14 @@
                                             @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                     </div>
-                                    <div class="-mx-3 md:flex mb-2">
-                                        <div class="md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
-                                                Interview Location
-                                            </label>
-                                            <input name="interviewlocation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewlocation" type="text" placeholder="" value="{{ old('interviewlocation') }}">
-                                            @error('interviewlocation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                        </div>
-                                        <div class="md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
-                                                Interview Notes/Requirements (Will be sent in the email)
-                                            </label>
-                                            <input name="extrarequirements" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="extrarequirements" type="text" placeholder="" value="{{ old('extrarequirements') }}">
-                                            @error('extrarequirements') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                        </div>
+                                    <div class="mb-6">
+                                        <label for="offered" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Offer Status</label>
+                                        <select name="offered" id="offered" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder=" " >
+                                            <option value="">Select an option</option>
+                                            <option value="0">Declined</option>
+                                            <option value="1">Offered</option>
+                                        </select>
+                                        @error('offered') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                     </div>
                                     <div class="flex">
                                         <h6 class="w-full font-semibold flex-col">Enter your comments below.</h6>
@@ -494,9 +487,9 @@
                                 </div>
                             </fieldset>
                             <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                            <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $applicationshortlist->id }}">
-                            <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationshortlist->user_id }}">
-                            <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $applicationshortlist->staff_requistion_form_id }}">
+                            <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $interviewlist->id }}">
+                            <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $interviewlist->user_id }}">
+                            <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $interviewlist->staff_requistion_form_id }}">
                             <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Invite Candidate for Interview</button>
                         </form>
                     @endif
@@ -504,7 +497,7 @@
 {{--                        to do, add message here --}}
                     @else
                     @role(['HoD','Business Partner'])
-                    <form method="POST" action="{{ route('bpartner.applicationshortlist.store') }}">
+                    <form method="POST" action="{{ route('bpartner.interviewlist.store') }}">
                         @csrf
                         <fieldset>
                             <legend></legend>
@@ -530,9 +523,9 @@
                             </div>
                         </fieldset>
                         <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                        <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $applicationshortlist->id }}">
-                        <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $applicationshortlist->user_id }}">
-                        <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_form_id" type="hidden" value="{{ $applicationshortlist->staff_requistion_form_id }}">
+                        <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $interviewlist->id }}">
+                        <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $interviewlist->user_id }}">
+                        <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_form_id" type="hidden" value="{{ $interviewlist->staff_requistion_form_id }}">
                         <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Invite Candidate for Interview</button>
                     </form>
                     @endrole

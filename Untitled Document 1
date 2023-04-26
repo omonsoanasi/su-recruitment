@@ -4,6 +4,8 @@ job type
 
 Add active flag on the jobs being applied. 
 
+give the deadline for the candidate to respond if she/he will be able to attend the interview 
+
 academic details qualification 1st class 2nd class etc
 
 if user has not accepted the terms and conditions, applications should not be sent
@@ -17,3 +19,7 @@ interviewer module
 -access interview questions 
 -give marks and suggestions
 
+
+
+start with try catch for interview 
+confirm interview attendance 

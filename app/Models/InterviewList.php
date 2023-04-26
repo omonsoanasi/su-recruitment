@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InterviewInvitation extends Model
+class InterviewList extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,14 +16,7 @@ class InterviewInvitation extends Model
         'applicant_id',
         'application_id',
         'staff_requistion_form_id',
-        'interviewdate',
-        'interviewtime',
-        'interviewlocation',
-        'extrarequirements',
-        'comments',
-        'candidateresponse',
-        'candidatecomment',
-        'responded',
+        'comment',
     ];
 
     public function user(): BelongsTo
@@ -32,7 +25,7 @@ class InterviewInvitation extends Model
     }
     public function staffRequistionForm(): BelongsTo
     {
-        return $this->belongsTo(StaffRequistionForm::class, 'staff_requistion_form_id', 'id');
+        return $this->belongsTo(StaffRequistionForm::class);
     }
     public function applicantBasicInfo(): BelongsTo
     {

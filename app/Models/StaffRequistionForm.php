@@ -71,4 +71,8 @@ class StaffRequistionForm extends Model
     {
         return $this->hasMany(ApplicationShortList::class );
     }
+    public function interviewlists(): HasMany
+    {
+        return $this->hasMany(InterviewInvitation::class );
+    }
 }

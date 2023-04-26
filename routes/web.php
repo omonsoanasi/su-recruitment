@@ -17,6 +17,8 @@ use App\Http\Controllers\Bpartner\ApplicationShortListController;
 use App\Http\Controllers\Bpartner\ApplicationShowController;
 use App\Http\Controllers\Bpartner\BpartnerIndexController;
 use App\Http\Controllers\Bpartner\CommentController;
+use App\Http\Controllers\Bpartner\InterviewInvitationController;
+use App\Http\Controllers\Bpartner\InterviewListController;
 use App\Http\Controllers\Bpartner\PnCApprovedRequistionController;
 use App\Http\Controllers\Bpartner\PublishedJobCommentController;
 use App\Http\Controllers\Bpartner\RequistionController;
@@ -29,6 +31,7 @@ use App\Http\Controllers\Candidate\CandidateDeclarationController;
 use App\Http\Controllers\Candidate\CandidateIndexController;
 use App\Http\Controllers\Candidate\CandidateInformationController;
 use App\Http\Controllers\Candidate\CandidateWorkExpController;
+use App\Http\Controllers\Candidate\InterviewResponseController;
 use App\Http\Controllers\FinanceOfficer\FOcommentController;
 use App\Http\Controllers\FinanceOfficer\FOIndexController;
 use App\Http\Controllers\FinanceOfficer\FORequistionController;
@@ -157,6 +160,8 @@ Route::group(['middleware' => ['auth', 'role:Business Partner']], function () {
         Route::resource('/applicationshow', ApplicationShowController::class);
         Route::resource('/applicationlonglist', ApplicationLongListController::class);
         Route::resource('/applicationshortlist', ApplicationShortListController::class);
+        Route::resource('/interviewinvitation', InterviewInvitationController::class);
+        Route::resource('/interviewlist', InterviewListController::class);
     });
 });
 
@@ -196,6 +201,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('/workexperience', CandidateWorkExpController::class);
         Route::resource('/applicationattachment', CandidateAttachmentController::class);
         Route::resource('/candidatedeclaration', CandidateDeclarationController::class);
+        Route::resource('/interviewresponse', InterviewResponseController::class );
     });
 });
 
