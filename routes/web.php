@@ -16,6 +16,7 @@ use App\Http\Controllers\Bpartner\ApplicationLongListController;
 use App\Http\Controllers\Bpartner\ApplicationShortListController;
 use App\Http\Controllers\Bpartner\ApplicationShowController;
 use App\Http\Controllers\Bpartner\BpartnerIndexController;
+use App\Http\Controllers\Bpartner\CandidateOfferController;
 use App\Http\Controllers\Bpartner\CommentController;
 use App\Http\Controllers\Bpartner\InterviewInvitationController;
 use App\Http\Controllers\Bpartner\InterviewListController;
@@ -162,6 +163,7 @@ Route::group(['middleware' => ['auth', 'role:Business Partner']], function () {
         Route::resource('/applicationshortlist', ApplicationShortListController::class);
         Route::resource('/interviewinvitation', InterviewInvitationController::class);
         Route::resource('/interviewlist', InterviewListController::class);
+        Route::resource('/candidateoffer', CandidateOfferController::class);
     });
 });
 

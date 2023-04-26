@@ -75,4 +75,8 @@ class StaffRequistionForm extends Model
     {
         return $this->hasMany(InterviewInvitation::class );
     }
+    public function candidateoffer(): HasMany
+    {
+        return $this->hasMany(CandidateOffer::class );
+    }
 }

@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('candidate_offers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('applicant_id')->constrained()->cascadeOnDelete()->references('user_id')->on('applications');
+            $table->foreignId('application_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('staff_requistion_form_id')->constrained()->cascadeOnDelete();
+            $table->string('comments');
+            $table->string('interviewdate');
+            $table->string('interviewtime');
+            $table->string('offered');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

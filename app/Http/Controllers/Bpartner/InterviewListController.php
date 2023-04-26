@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Application;
 use App\Models\ApplicationLongList;
 use App\Models\ApplicationShortList;
+use App\Models\CandidateOffer;
 use App\Models\HoDFeedback;
 use App\Models\InterviewInvitation;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class InterviewListController extends Controller
         $param = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1); // Extract the query parameter from the URL
 
         $interviewlists = InterviewInvitation::where('staff_requistion_form_id', $param)->get();
-        return view('bpartner.interviewlist.index', compact('interviewlists'));
+        return view('bpartner.candidateoffer.index', compact('interviewlists'));
     }
 
     /**
@@ -47,7 +48,8 @@ class InterviewListController extends Controller
         $longlistcomments = ApplicationLongList::where('applicant_id',$interviewlist->user_id)->where('application_id', $interviewlist->id)->get();
         $shortlistcomments = ApplicationShortList::where('applicant_id',$interviewlist->user_id)->where('application_id', $interviewlist->id)->get();
         $hodcomments = HoDFeedback::where('applicant_id',$interviewlist->user_id)->where('application_id', $interviewlist->id)->get();
-        return view('bpartner.interviewlist.show', compact('interviewlist', 'longlistcomments', 'shortlistcomments','hodcomments'));
+        $interviewcomments = CandidateOffer::where('applicant_id',$interviewlist->user_id)->where('application_id', $interviewlist->id)->get();
+        return view('bpartner.interviewlist.show', compact('interviewlist', 'longlistcomments', 'shortlistcomments','hodcomments','interviewcomments'));
     }
 
     /**

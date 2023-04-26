@@ -28,7 +28,7 @@
                         </nav>
                         <div class="bg-gray-100 p-4 rounded-md mt-4">
                             <h2 class="text-2xl font-bold mb-4">Cover Letter</h2>
-                            {!! $interviewlist->coverletter !!}
+                            {!! $candidateoffer->coverletter !!}
                         </div>
 
                         <div class="bg-gray-100 p-4 rounded-md mt-4">
@@ -37,16 +37,16 @@
                                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                                     <div>
                                         <p class="font-bold">Name:</p>
-                                        <p>{{ $interviewlist->basicinfo->title }} {{ $interviewlist->basicinfo->firstname }} {{ $interviewlist->basicinfo->middlename }} {{ $interviewlist->basicinfo->lastname }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->title }} {{ $candidateoffer->basicinfo->firstname }} {{ $candidateoffer->basicinfo->middlename }} {{ $candidateoffer->basicinfo->lastname }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Gender:</p>
-                                        <p>{{ $interviewlist->basicinfo->gender }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->gender }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Age:</p>
                                         @php
-                                            $dob = new DateTime($interviewlist->basicinfo->dateofbirth);
+                                            $dob = new DateTime($candidateoffer->basicinfo->dateofbirth);
                                             $now = new DateTime();
                                             $age = $dob->diff($now)->y;
                                         @endphp
@@ -54,34 +54,34 @@
                                     </div>
                                     <div>
                                         <p class="font-bold">Nationality:</p>
-                                        <p>{{ $interviewlist->basicinfo->nationality }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->nationality }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Country of Residence:</p>
-                                        <p>{{ $interviewlist->basicinfo->countryofresidence }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->countryofresidence }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Phone Number:</p>
-                                        <p>{{ $interviewlist->basicinfo->phonenumber }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->phonenumber }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Email:</p>
-                                        <p>{{ $interviewlist->basicinfo->email }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->email }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Address:</p>
-                                        <p>{{ $interviewlist->basicinfo->postaladdress }} - {{ $interviewlist->basicinfo->postalcode }}, {{ $interviewlist->basicinfo->city }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->postaladdress }} - {{ $candidateoffer->basicinfo->postalcode }}, {{ $candidateoffer->basicinfo->city }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Marital Status:</p>
                                         <p>
-                                            @if($interviewlist->basicinfo->maritalstatus == 0)
+                                            @if($candidateoffer->basicinfo->maritalstatus == 0)
                                                 Single
-                                            @elseif($interviewlist->basicinfo->maritalstatus == 1)
+                                            @elseif($candidateoffer->basicinfo->maritalstatus == 1)
                                                 Married
-                                            @elseif($interviewlist->basicinfo->maritalstatus == 2)
+                                            @elseif($candidateoffer->basicinfo->maritalstatus == 2)
                                                 Divorced
-                                            @elseif($interviewlist->basicinfo->maritalstatus == 3)
+                                            @elseif($candidateoffer->basicinfo->maritalstatus == 3)
                                                 Separated
                                             @endif
                                         </p>
@@ -89,7 +89,7 @@
                                     <div>
                                         <p class="font-bold">Applicant Type:</p>
                                         <p>
-                                            @if($interviewlist->basicinfo->applicanttype == 1)
+                                            @if($candidateoffer->basicinfo->applicanttype == 1)
                                                 External
                                             @else
                                                 Internal
@@ -99,34 +99,34 @@
                                     <div>
                                         <p class="font-bold">Related to Strathmore Staff:</p>
                                         <p>
-                                            @if($interviewlist->basicinfo->relatedtostaff == 1)
+                                            @if($candidateoffer->basicinfo->relatedtostaff == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($interviewlist->basicinfo->relatedtostaff == 1)
+                                    @if($candidateoffer->basicinfo->relatedtostaff == 1)
                                         <div>
                                             <p class="font-bold">Relationship Type:</p>
-                                            <p>{{ $interviewlist->basicinfo->relationshiptype }}</p>
+                                            <p>{{ $candidateoffer->basicinfo->relationshiptype }}</p>
                                         </div>
                                         <div>
                                             <p class="font-bold">Name of Staff:</p>
-                                            <p>{{ $interviewlist->basicinfo->nameofstaff }}</p>
+                                            <p>{{ $candidateoffer->basicinfo->nameofstaff }}</p>
                                         </div>
                                     @endif
                                     <div>
                                         <p class="font-bold">Current Salary:</p>
-                                        <p>{{ $interviewlist->basicinfo->currsalary }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->currsalary }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Expected Salary:</p>
-                                        <p>{{ $interviewlist->basicinfo->expsalary }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->expsalary }}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Physical Disability:</p>
-                                        <p>@if($interviewlist->basicinfo->disability == 1)
+                                        <p>@if($candidateoffer->basicinfo->disability == 1)
                                                 Yes
                                             @else
                                                 No
@@ -134,53 +134,53 @@
                                     </div>
                                     <div>
                                         <p class="font-bold">Expected Salary:</p>
-                                        <p>{{ $interviewlist->basicinfo->expsalary }}</p>
+                                        <p>{{ $candidateoffer->basicinfo->expsalary }}</p>
                                     </div>
                                     <div class="col-span-2">
                                         <p class="font-bold">Skills/Competence:</p>
-                                        <p>{!! $interviewlist->basicinfo->skillscompetence !!}</p>
+                                        <p>{!! $candidateoffer->basicinfo->skillscompetence !!}</p>
                                     </div>
                                     <div class="col-span-2">
                                         <p class="font-bold">Strengths:</p>
-                                        <p>{!! $interviewlist->basicinfo->strengths !!}</p>
+                                        <p>{!! $candidateoffer->basicinfo->strengths !!}</p>
                                     </div>
                                     <div>
                                         <p class="font-bold">Ever Arrested:</p>
                                         <p>
-                                            @if($interviewlist->basicinfo->lawviolation == 1)
+                                            @if($candidateoffer->basicinfo->lawviolation == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($interviewlist->basicinfo->lawviolation == 1)
+                                    @if($candidateoffer->basicinfo->lawviolation == 1)
                                         <div>
                                             <p class="font-bold">Violation Description:</p>
-                                            <p>{!! $interviewlist->basicinfo->violationdesc !!} </p>
+                                            <p>{!! $candidateoffer->basicinfo->violationdesc !!} </p>
                                         </div>
                                     @endif
                                     <div>
                                         <p class="font-bold">Involved in Exploitation/Abuse:</p>
                                         <p>
-                                            @if($interviewlist->basicinfo->exploitation == 1)
+                                            @if($candidateoffer->basicinfo->exploitation == 1)
                                                 Yes
                                             @else
                                                 No
                                             @endif
                                         </p>
                                     </div>
-                                    @if($interviewlist->basicinfo->exploitation == 1)
+                                    @if($candidateoffer->basicinfo->exploitation == 1)
                                         <div>
                                             <p class="font-bold">Violation Description:</p>
-                                            <p>{!! $interviewlist->basicinfo->exploitationdesc !!} </p>
+                                            <p>{!! $candidateoffer->basicinfo->exploitationdesc !!} </p>
                                         </div>
                                     @endif
                                 </div>
                             </div>
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($interviewlist->academicinfo)
+                            @if($candidateoffer->academicinfo)
                                 <div class="bg-gray-100 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Academic Information</h2>
                                     <!-- component -->
@@ -212,7 +212,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($interviewlist->academicinfo as $aceinfo)
+                                                        @foreach($candidateoffer->academicinfo as $aceinfo)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $aceinfo->qualificationtype->name }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -243,7 +243,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($interviewlist->workexperience)
+                            @if($candidateoffer->workexperience)
                                 <div class="bg-cyan-50 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Work Experience</h2>
                                     <!-- component -->
@@ -278,7 +278,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($interviewlist->workexperience as $workexperience)
+                                                        @foreach($candidateoffer->workexperience as $workexperience)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $workexperience->jobtitle }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -341,7 +341,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($interviewlist->attachments)
+                            @if($candidateoffer->attachments)
                                 <div class="bg-gray-100 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Attachments</h2>
                                     <!-- component -->
@@ -364,7 +364,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @foreach($interviewlist->attachments as $attachment)
+                                                        @foreach($candidateoffer->attachments as $attachment)
                                                             <tr class="bg-gray-100 border-b">
                                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $attachment->applicationattachment->name }}</td>
                                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -386,7 +386,7 @@
                             @endif
                         </div>
                         <div class="bg-gray-100 p-4 rounded-md mt-4" >
-                            @if($interviewlist->declaration)
+                            @if($candidateoffer->declaration)
                                 <div class="bg-cyan-50 p-4 rounded-md w-full">
                                     <h2 class="text-2xl font-bold mb-4">Declaration</h2>
                                     <!-- component -->
@@ -394,7 +394,7 @@
                                         <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
                                             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                                                 <div class="overflow-hidden">
-                                                    @if($interviewlist->declaration->agree == 1)
+                                                    @if($candidateoffer->declaration->agree == 1)
                                                         <span class="text-emerald-700 font-bold">Agreed to the Terms and Conditions</span>
                                                     @else
                                                         <span class="text-red-800 font-bold">Did not agree to the terms and conditions</span>
@@ -422,83 +422,75 @@
                             {!! $comment->comment !!}
                         @endforeach
                     </div>
-                    @if(count($hodcomments)>0)
                     <div class="bg-gray-100 p-4 rounded-md mt-4">
                         <h2 class="text-2xl font-bold mb-4">HOD Comments </h2>
                         @foreach($hodcomments as $comment)
                             {!! $comment->comment !!}
                         @endforeach
                     </div>
-                    @else
-                        <div class="bg-cyan-50 p-4 rounded-md mt-4">
-                            <span class="text-sm mb-4 text-red-800">The HoD has not given feedback yet.</span>
-                        </div>
-                    @endif
-                    @if(count($interviewcomments)>0)
-                        <div class="bg-cyan-50 p-4 rounded-md mt-4">
-                            <h2 class="text-2xl font-bold mb-4">Final Comments </h2>
-                            @foreach($interviewcomments as $comment)
-                                {!! $comment->comments !!}
-                            @endforeach
-                        </div>
-                    @else
-                        <form method="POST" action="{{ route('bpartner.candidateoffer.store') }}">
-                            @csrf
-                            <fieldset>
-                                <legend></legend>
-                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
-                                    <div class="flex">
-                                        <h6 class="w-full font-semibold flex-col">Interview Notes.</h6>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
-                                    <div class="-mx-3 md:flex mb-2">
-                                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
-                                                Interview Date
-                                            </label>
-                                            <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="" value="{{ old('interviewdate') }}">
-                                            @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                        </div>
-                                        <div class="md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
-                                                Interview Time
-                                            </label>
-                                            <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ old('interviewtime') }}">
-                                            @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="mb-6">
-                                        <label for="offered" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Offer Status</label>
-                                        <select name="offered" id="offered" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder=" " >
-                                            <option value="">Select an option</option>
-                                            <option value="0">Declined</option>
-                                            <option value="1">Offered</option>
-                                        </select>
-                                        @error('offered') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                    </div>
-                                    <div class="flex">
-                                        <h6 class="w-full font-semibold flex-col">Enter your comments below.</h6>
-                                    </div>
-                                    <div class="-mx-3 md:flex mb-6">
-                                        <div class="md:w-full px-3">
-                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
-                                                <span class="text-red-500">*</span>
-                                            </label>
-                                            <textarea id="editor" name="comments" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters">
-                                        </textarea>
-                                            @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
-                            <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $interviewlist->id }}">
-                            <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $interviewlist->user_id }}">
-                            <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $interviewlist->staff_requistion_form_id }}">
-                            <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish Requisition</button>
-                        </form>
-                    @endif
+                    <div class="bg-cyan-50 p-4 rounded-md mt-4">
+                        <h2 class="text-2xl font-bold mb-4">Final Comments </h2>
+                        @foreach($interviewcomments as $comment)
+                            {!! $comment->comments !!}
+                        @endforeach
+                    </div>
+
+{{--                        <form method="POST" action="{{ route('bpartner.candidateoffer.store') }}">--}}
+{{--                            @csrf--}}
+{{--                            <fieldset>--}}
+{{--                                <legend></legend>--}}
+{{--                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">--}}
+{{--                                    <div class="flex">--}}
+{{--                                        <h6 class="w-full font-semibold flex-col">Interview Notes.</h6>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">--}}
+{{--                                    <div class="-mx-3 md:flex mb-2">--}}
+{{--                                        <div class="md:w-1/2 px-3 mb-6 md:mb-0">--}}
+{{--                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">--}}
+{{--                                                Interview Date--}}
+{{--                                            </label>--}}
+{{--                                            <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="" value="{{ old('interviewdate') }}">--}}
+{{--                                            @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror--}}
+{{--                                        </div>--}}
+{{--                                        <div class="md:w-1/2 px-3">--}}
+{{--                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">--}}
+{{--                                                Interview Time--}}
+{{--                                            </label>--}}
+{{--                                            <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ old('interviewtime') }}">--}}
+{{--                                            @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="mb-6">--}}
+{{--                                        <label for="offered" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Offer Status</label>--}}
+{{--                                        <select name="offered" id="offered" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder=" " >--}}
+{{--                                            <option value="">Select an option</option>--}}
+{{--                                            <option value="0">Declined</option>--}}
+{{--                                            <option value="1">Offered</option>--}}
+{{--                                        </select>--}}
+{{--                                        @error('offered') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror--}}
+{{--                                    </div>--}}
+{{--                                    <div class="flex">--}}
+{{--                                        <h6 class="w-full font-semibold flex-col">Enter your comments below.</h6>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="-mx-3 md:flex mb-6">--}}
+{{--                                        <div class="md:w-full px-3">--}}
+{{--                                            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">--}}
+{{--                                                <span class="text-red-500">*</span>--}}
+{{--                                            </label>--}}
+{{--                                            <textarea id="editor" name="comments" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters">--}}
+{{--                                        </textarea>--}}
+{{--                                            @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </fieldset>--}}
+{{--                            <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">--}}
+{{--                            <input name="application_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="application_id" type="hidden" value="{{ $candidateoffer->id }}">--}}
+{{--                            <input name="applicant_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="applicant_id" type="hidden" value="{{ $candidateoffer->user_id }}">--}}
+{{--                            <input name="staff_requistion_form_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $candidateoffer->staff_requistion_form_id }}">--}}
+{{--                            <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish Requisition</button>--}}
+{{--                        </form>--}}
                 </div>
             </div>
         </div>
