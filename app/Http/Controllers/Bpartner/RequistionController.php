@@ -18,7 +18,7 @@ class RequistionController extends Controller
      */
     public function index()
     {
-        $requistions = StaffRequistionForm::where('status','<=', 2)->get();
+        $requistions = StaffRequistionForm::where('status','<=', 2)->orderBy('status', 'asc')->get();
         return view('bpartner.requistions.index', compact('requistions'));
     }
 

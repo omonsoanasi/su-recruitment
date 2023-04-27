@@ -39,7 +39,7 @@
                                             Pending Requisition Requests
                                         </div>
                                         <div class = "">
-                                            100
+                                            {{ $forequistions->count() }}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -62,7 +62,7 @@
                                             Approved Requisition Requests
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{ $approvedforequistions->count() }}
                                         </div>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
@@ -82,7 +82,7 @@
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Total Requisitions
+                                            Rejected Requisitions
                                         </div>
                                         <div class = "">
                                             500
@@ -106,27 +106,19 @@
                             var myChart = new Chart(ctx, {
                                 type: 'pie',
                                 data: {
-                                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                    labels: ['All', 'Approved', 'Rejected'],
                                     datasets: [{
-                                        label: 'Sales',
-                                        data: [12, 19, 3, 5, 2, 3, 7],
+                                        label: 'Requisitions',
+                                        data: [{{ $allrequistions->count() }}, {{ $pncapproved->count() }}, 3],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)',
-                                            'rgba(255, 99, 132, 0.2)'
+                                            'rgba(255, 206, 86, 0.2)'
                                         ],
                                         borderColor: [
                                             'rgba(255, 99, 132, 1)',
                                             'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)',
-                                            'rgba(255, 99, 132, 1)'
+                                            'rgba(255, 206, 86, 1)'
                                         ],
                                         borderWidth: 1
                                     }]
@@ -140,16 +132,6 @@
                                 }
                             });
                         </script>
-
-                        <div class = "p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
-                            <span class = "font-medium">Info alert!</span> Change a few things up and try submitting again.
-                        </div>
-                        <div class = "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-                            <span class = "font-medium">Danger alert!</span> Change a few things up and try submitting again.
-                        </div>
-                        <div class = "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-                            <span class = "font-medium">Success alert!</span> Change a few things up and try submitting again.
-                        </div>
                     </div>
                 </div>
             </div>

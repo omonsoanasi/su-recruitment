@@ -35,41 +35,47 @@
                                         </svg>
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
+                                        <a href="{{ route('bpartner.requistions.index') }}">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Pending Requisition Requests
+                                            New Requisition Requests
                                         </div>
                                         <div class = "">
-                                            100
+                                            {{ $newrequistions->count() }}
                                         </div>
+                                        </a>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
+                                        <a href="{{ route('bpartner.requistions.index') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class = "w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                         </svg>
-
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                             <div class = "w-full md:w-1/2 lg:w-1/3 p-2 ">
                                 <div class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                                     <div class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class = "object-scale-down transition duration-500 ">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="green" class="object-scale-down transition duration-500">
+                                            <path d="M6.5 12L9 14.5L18 5.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
+                                        <a href="{{ route('bpartner.pncapprovedrequistions.index') }}">
                                         <div class = "text-xs whitespace-nowrap">
                                             Approved Requisition Requests
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{ $pncapprovedrequistions->count() }}
                                         </div>
+                                        </a>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
+                                        <a href="{{ route('bpartner.pncapprovedrequistions.index') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class = "w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                         </svg>
-
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -81,18 +87,21 @@
                                         </svg>
                                     </div>
                                     <div class = "flex flex-col justify-around flex-grow ml-5 text-white">
+                                        <a href="{{ route('bpartner.applications.index') }}">
                                         <div class = "text-xs whitespace-nowrap">
-                                            Total Requisitions
+                                            Active Applications
                                         </div>
                                         <div class = "">
-                                            500
+                                            {{ $activeapplications->count() }}
                                         </div>
+                                        </a>
                                     </div>
                                     <div class = " flex items-center flex-none text-white">
+                                        <a href="{{ route('bpartner.applications.index') }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class = "w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                         </svg>
-
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -106,27 +115,19 @@
                             var myChart = new Chart(ctx, {
                                 type: 'pie',
                                 data: {
-                                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                    labels: ['Female', 'Male', 'Other'],
                                     datasets: [{
-                                        label: 'Sales',
-                                        data: [12, 19, 3, 5, 2, 3, 7],
+                                        label: 'Gender',
+                                        data: [{{ $female->count() }}, {{ $male->count() }}, {{ $other->count() }}],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)',
-                                            'rgba(255, 99, 132, 0.2)'
+                                            'rgba(255, 206, 86, 0.2)'
                                         ],
                                         borderColor: [
                                             'rgba(255, 99, 132, 1)',
                                             'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)',
-                                            'rgba(255, 99, 132, 1)'
+                                            'rgba(255, 206, 86, 1)'
                                         ],
                                         borderWidth: 1
                                     }]
@@ -141,15 +142,15 @@
                             });
                         </script>
 
-                        <div class = "p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
-                            <span class = "font-medium">Info alert!</span> Change a few things up and try submitting again.
-                        </div>
-                        <div class = "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-                            <span class = "font-medium">Danger alert!</span> Change a few things up and try submitting again.
-                        </div>
-                        <div class = "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-                            <span class = "font-medium">Success alert!</span> Change a few things up and try submitting again.
-                        </div>
+{{--                        <div class = "p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">--}}
+{{--                            <span class = "font-medium">Info alert!</span> Change a few things up and try submitting again.--}}
+{{--                        </div>--}}
+{{--                        <div class = "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">--}}
+{{--                            <span class = "font-medium">Danger alert!</span> Change a few things up and try submitting again.--}}
+{{--                        </div>--}}
+{{--                        <div class = "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">--}}
+{{--                            <span class = "font-medium">Success alert!</span> Change a few things up and try submitting again.--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>
