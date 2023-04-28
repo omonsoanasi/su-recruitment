@@ -92,8 +92,9 @@ class StaffRequisitionFormController extends Controller
         $jobTypes = JobType::all();
         $departments = Department::all();
         $campuslocations = CampusLocation::all();
+        $businesspartnerrejection = BusinessPartnerComment::where('staff_requistion_forms_id', $staffrequistionform->id)->get();
         //render the edit view
-        return view('hod.staffrequistionform.edit', compact('staffrequistionform','comments', 'jobTypes', 'departments', 'campuslocations'));
+        return view('hod.staffrequistionform.edit', compact('staffrequistionform','comments', 'jobTypes', 'departments', 'campuslocations', 'businesspartnerrejection'));
     }
 
     /**
@@ -122,6 +123,9 @@ class StaffRequisitionFormController extends Controller
             'personalqualities' => 'min:3',
             'other' => 'max:20055',
             'skill' => 'max:20055',
+            'onlineexam'=> 'required',
+            'technicalexam' => 'required',
+            'status' => 'required',
         ]);
         $staffrequistionform->update($validated);
 

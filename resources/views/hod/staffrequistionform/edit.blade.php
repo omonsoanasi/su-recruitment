@@ -281,11 +281,24 @@
 
                                             </div>
                                         </fieldset>
+                                        <fieldset>
+                                            <legend>Comments From the Business Partner</legend>
+                                            <div class="bg-red-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                @foreach($businesspartnerrejection as $bpreject)
+                                                    <span>
+                                                        {!! $bpreject->comment !!}
+                                                    </span>
+                                                    <span>
+                                                        - Comments by: <strong>{{ $bpreject->user->name }}</strong> On: <strong>{{ $bpreject->updated_at }}</strong>
+                                                    </span>
+                                                @endforeach
+                                            </div>
+                                        </fieldset>
                                     <input name="user_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
                                     @if($staffrequistionform->status >= 1)
                                     <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" disabled tabindex="-1">Request Forwarded for Approval/Can't be edited at this point</button>
                                     @else
-                                        <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Request</button>
+                                        <button type="submit" name="status" value="0" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Request</button>
                                     @endif
                                 </form>
                             </div>

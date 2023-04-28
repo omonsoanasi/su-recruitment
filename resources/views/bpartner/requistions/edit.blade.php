@@ -172,6 +172,21 @@
                                                         @endforeach
                                                     </div>
                                                 @else
+                                                    @if($requistion->status == 0 && count($comments)>0)
+                                                        <fieldset>
+                                                            <legend>Previous Comments From the Business Partner</legend>
+                                                            <div class="bg-red-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                                @foreach($comments as $bpreject)
+                                                                    <span>
+                                                                        {!! $bpreject->comment !!}
+                                                                    </span>
+                                                                    <span>
+                                                                        - Comments by: <strong>{{ $bpreject->user->name }}</strong> On: <strong>{{ $bpreject->updated_at }}</strong>
+                                                                    </span>
+                                                                @endforeach
+                                                            </div>
+                                                        </fieldset>
+                                                    @endif
                                                 @role('Business Partner')
                                                 <form method="POST" action="{{ route('bpartner.comments.store', $requistion) }}">
                                                     @csrf
@@ -198,9 +213,8 @@
                                                     </fieldset>
                                                     <input name="user_id" class="appearance-none block w-full bg-grey-l0ighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
                                                     <input name="staff_requistion_forms_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $requistion->id }}">
-                                                    <button type="submit" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Forward to Finance Office (for approval)</button>
-                                                    <button type="submit" class="text-white bg-red-900 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Reject</button>
-                                                </form>
+                                                    <button type="submit" name="status" value="1" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Forward to Finance Office (for approval)</button>
+                                                    <button type="submit" name="status" value="-1" class="text-white bg-red-900 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Reject</button>                                                </form>
                                                 @endrole
                                                 @endif
                                                 <hr>
