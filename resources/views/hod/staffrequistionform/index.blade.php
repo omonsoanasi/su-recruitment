@@ -77,8 +77,12 @@
                                                         <span class="text-emerald-600 font-semibold">PnC Executive Director</span>
                                                     @elseif($staffrequistion->status == 4)
                                                         <span class="text-emerald-600 font-semibold">Published</span>
-                                                    @else
-                                                        <span class="text-cyan-600 font-semibold">New</span>
+                                                    @elseif($staffrequistion->status == 0)
+                                                        <span class="text-emerald-600 font-semibold">New</span>
+                                                    @elseif($staffrequistion->status == -1)
+                                                        <span class="text-red-600 font-semibold">Returned</span>
+{{--                                                    @else--}}
+{{--                                                        <span class="text-cyan-600 font-semibold">New</span>--}}
                                                     @endif
                                                 </td>
                                                 <td class="px-6 py-4">

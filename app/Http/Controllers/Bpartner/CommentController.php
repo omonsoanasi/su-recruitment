@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Bpartner;
 
 use App\Http\Controllers\Controller;
+use App\Mail\BusinessPartnerApprovalEmail;
+use App\Mail\BusinessPartnerRequistionRejectionEmail;
 use App\Models\BusinessPartnerComment;
 use App\Models\StaffRequistionForm;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -35,17 +39,27 @@ class CommentController extends Controller
             'comment' => 'required|max:255|min:3',
             'user_id' => 'max:255',
             'staff_requistion_forms_id' => 'max:255',
+            'status' => 'required'
         ]);
         $formId = $validated['staff_requistion_forms_id'];
         $staffFormRequistion = StaffRequistionForm::find($formId);
-        $staffFormRequistion->status = '1';
-        $staffFormRequistion->save();
+        $staffFormRequistion->status = $validated['status'];
+//        $staffFormRequistion->save();
 
-//        BusinessPartnerComment::create($validated);
+//        $financeofficer = User::role('Finance Officer')->get();
+//        $emails = $financeofficer->pluck('email');
+//        Mail::to($emails)->send(new MyEmail());
+        $foemails = User::role('Finance Officer')->pluck('email')->toArray();
+
         $bpComment = BusinessPartnerComment::updateOrCreate(
             ['staff_requistion_forms_id' => $validated['staff_requistion_forms_id']],
             ['comment' => $validated['comment'], 'user_id' =>$validated['user_id']]
         );
+
+        if($validated['status'] == -1)
+            Mail::to($staffFormRequistion->user->email)->send(new BusinessPartnerRequistionRejectionEmail($staffFormRequistion, $validated));
+        elseif($validated['status'] == 1)
+            Mail::to($foemails)->send(new BusinessPartnerApprovalEmail($staffFormRequistion, $validated));
 
         return to_route('bpartner.requistions.index')->with('message','Successfully updated');
     }

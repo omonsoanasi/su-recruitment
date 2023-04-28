@@ -64,19 +64,19 @@
                                                 <td class="px-6 py-4">
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2 p-2">
-                                                            <a href="{{ route('bpartner.applicationshow.index', $publishedjob) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Applications <br><span class="text-indigo-700 font-bold">({{ $publishedjob->applications->count() }})</span></a>
+                                                            <a href="{{ route('bpartner.applicationshow.index', $publishedjob) }}" class="px-4 py-2 bg-red-500 hover:bg-red-800 text-white rounded-md">Applications <br><span class="text-white font-bold text-xl">({{ $publishedjob->applications->count() }})</span></a>
                                                         </div>
                                                         <div class="flex space-x-2 p-2">
-                                                            <a href="{{ route('bpartner.applicationlonglist.index', $publishedjob) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Longlist <br><span class="text-sky-100 font-bold">({{ $publishedjob->longlists->count() }})</span></a>
+                                                            <a href="{{ route('bpartner.applicationlonglist.index', $publishedjob) }}" class="px-4 py-2 bg-orange-600 hover:bg-orange-800 text-white rounded-md">Longlist <br><span class="text-xl font-bold text-white">({{ $publishedjob->longlists->count() }})</span></a>
                                                         </div>
                                                         <div class="flex space-x-2 p-2">
-                                                            <a href="{{ route('bpartner.applicationshortlist.index', $publishedjob) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Shortlist <br><span class="text-yellow-200 font-bold">({{ $publishedjob->shortlists->count() }})</span></a>
+                                                            <a href="{{ route('bpartner.applicationshortlist.index', $publishedjob) }}" class="px-4 py-2 bg-sky-500 hover:bg-sky-800 rounded-md text-white">Shortlist <br><span class="text-xl font-bold text-white">({{ $publishedjob->shortlists->count() }})</span></a>
                                                         </div>
                                                         <div class="flex space-x-2 p-2">
-                                                            <a href="{{ route('bpartner.interviewlist.index', $publishedjob) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Interviews <br><span class="text-indigo-700 font-bold">({{ $publishedjob->interviewlists->count() }})</span></a>
+                                                            <a href="{{ route('bpartner.interviewlist.index', $publishedjob) }}" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-800 text-xl rounded-md text-white">Interviews <br><span class="text-indigo-700 font-bold text-white">({{ $publishedjob->interviewlists->count() }})</span></a>
                                                         </div>
                                                         <div class="flex space-x-2 p-2">
-                                                            <a href="{{ route('bpartner.candidateoffer.index', $publishedjob) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Offered <br><span class="text-indigo-700 font-bold">({{ $publishedjob->candidateoffer->count() }})</span></a>
+                                                            <a href="{{ route('bpartner.candidateoffer.index', $publishedjob) }}" class="px-4 py-2 bg-green-400 hover:bg-green-950 text-white rounded-md">Offered <br><span class="text-white font-bold text-xl">({{ $publishedjob->candidateoffer->count() }})</span></a>
                                                         </div>
                                                     </div>
                                                 </td>

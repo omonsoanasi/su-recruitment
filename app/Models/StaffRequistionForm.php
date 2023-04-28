@@ -35,9 +35,14 @@ class StaffRequistionForm extends Model
         'other',
         'skill',
         'technicalexam',
-        'onlineexam'
+        'onlineexam',
+        'status'
     ];
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
     public function jobType(): BelongsTo
     {
         return $this->belongsTo(JobType::class);
