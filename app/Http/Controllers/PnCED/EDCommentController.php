@@ -35,10 +35,11 @@ class EDCommentController extends Controller
             'comment' => 'required|max:255|min:3',
             'user_id' => 'max:255',
             'staff_requistion_forms_id' => 'max:255',
+            'status' => 'required',
         ]);
         $formId = $validated['staff_requistion_forms_id'];
         $staffFormRequistion = StaffRequistionForm::find($formId);
-        $staffFormRequistion->status = '3';
+        $staffFormRequistion->status = $validated['status'];
         $staffFormRequistion->save();
 
         $edComment = EDComment::updateOrCreate(

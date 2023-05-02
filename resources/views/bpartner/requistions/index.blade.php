@@ -72,6 +72,12 @@
                                                         <span class="text-amber-400 font-semibold">Forwarded</span>
                                                     @elseif($requistion->status == 2)
                                                         <span class="text-emerald-600 font-semibold">Processing</span>
+                                                    @elseif($requistion->status == -2)
+                                                        <span class="text-red-600 font-semibold">Returned</span><br>
+                                                        <span class="italic text-sm text-gray-400">from Finance Office</span>
+                                                    @elseif($requistion->status == -3)
+                                                        <span class="text-red-600 font-semibold">Returned</span><br>
+                                                        <span class="italic text-sm text-gray-400">from PnC Executive Director</span>
                                                     @endif
                                                 </td>
                                                 <td class="px-6 py-4">
@@ -79,6 +85,10 @@
                                                         <div class="flex space-x-2">
                                                             @if($requistion->status == 0)
                                                                 <a href="{{ route('bpartner.requistions.edit', $requistion->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md w-24">Take Action</a>
+                                                            @elseif($requistion->status == -2)
+                                                                <a href="{{ route('bpartner.requistions.edit', $requistion->id) }}" class="px-4 py-2 bg-orange-300 hover:bg-blue-800 hover:text-white rounded-md text-l font-bold w-24">Take Action</a>
+                                                            @elseif($requistion->status == -3)
+                                                                <a href="{{ route('bpartner.requistions.edit', $requistion->id) }}" class="px-4 py-2 bg-orange-300 hover:bg-blue-800 hover:text-white rounded-md text-l font-bold w-24">Take Action</a>
                                                             @elseif($requistion->status == 1)
                                                                 <a href="{{ route('bpartner.requistions.edit', $requistion->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md w-24">Edit</a>
                                                             @elseif($requistion->status == 2)

@@ -8,10 +8,12 @@ use App\Models\CampusLocation;
 use App\Models\Department;
 use App\Models\JobType;
 use App\Models\StaffRequistionForm;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\Console\Migrations\ResetCommand;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StaffRequisitionFormController extends Controller
 {
@@ -21,7 +23,7 @@ class StaffRequisitionFormController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        $staffrequistions = StaffRequistionForm::where('user_id','=',$user_id)->get();
+        $staffrequistions = StaffRequistionForm::where('user_id','=',$user_id)->where('status', '!=', -2)->get();
         return view('hod.staffrequistionform.index', compact('staffrequistions'));
     }
 
@@ -65,6 +67,9 @@ class StaffRequisitionFormController extends Controller
             'onlineexam'=> 'required',
             'technicalexam' => 'required'
         ]);
+
+        $slug = Str::slug($validated['jobtitle']) . '-' . time();
+        $validated['slug'] = $slug;
         StaffRequistionForm::create($validated);
 
         return to_route('hod.staffrequistionform.index')->with('message','Requisition submitted successfully');

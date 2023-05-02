@@ -39,7 +39,7 @@
                                                 Job Type
                                             </th>
                                             <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                Advertise
+                                                Status
                                             </th>
                                             <th scope="col" class="px-6 py-3">
                                                 Status
@@ -59,10 +59,10 @@
                                                     {{ $pncapprovedrequistion->jobType->name }}
                                                 </td>
                                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                    @if($pncapprovedrequistion->advertise == 1)
-                                                        Yes
+                                                    @if($pncapprovedrequistion->active == 1)
+                                                        <span class="text-emerald-700">Active</span>
                                                     @else
-                                                        No
+                                                        <span class="text-indigo-700">Inactive</span>
                                                     @endif
                                                 </th>
                                                 <td class="px-6 py-4">

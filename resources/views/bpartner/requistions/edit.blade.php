@@ -144,6 +144,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if($requistion->status == -2)
+                                        <fieldset>
+                                            <legend>Comments From the Finance Officer</legend>
+                                            <div class="bg-red-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                @foreach($focomments as $focomment)
+                                                    <span>{!! $focomment->comment !!}</span>
+                                                    <span>
+                                                        - Comments by: <strong>{{ $focomment->user->name }}</strong> On: <strong>{{ $focomment->updated_at }}</strong></span>
+                                                @endforeach
+                                            </div>
+                                        </fieldset>
+                                    @elseif($requistion->status == -3)
+                                            <fieldset>
+                                                <legend>Comments From the Executive Director</legend>
+                                                <div class="bg-red-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                    @foreach($edComments as $edComment)
+                                                        <span>{!! $edComment->comment !!}</span>
+                                                        <span>
+                                                        - Comments by: <strong>{{ $edComment->user->name }}</strong> On: <strong>{{ $edComment->updated_at }}</strong></span>
+                                                    @endforeach
+                                                </div>
+                                            </fieldset>
+                                    @endif
                                     <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-4">
                                         <div class="flex w-full justify-center">
                                             <div class="p-4">
@@ -213,8 +236,13 @@
                                                     </fieldset>
                                                     <input name="user_id" class="appearance-none block w-full bg-grey-l0ighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="user_id" type="hidden" value="{{ Auth::id() }}">
                                                     <input name="staff_requistion_forms_id" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="staff_requistion_forms_id" type="hidden" value="{{ $requistion->id }}">
-                                                    <button type="submit" name="status" value="1" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Forward to Finance Office (for approval)</button>
-                                                    <button type="submit" name="status" value="-1" class="text-white bg-red-900 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Reject</button>                                                </form>
+                                                    @if($requistion->status == -3)
+                                                        <button type="submit" name="status" value="2" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Forward for Approval</button>
+                                                    @else
+                                                        <button type="submit" name="status" value="1" class="text-white bg-green-800 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Forward to Finance Office (for approval)</button>
+                                                    @endif
+                                                    <button type="submit" name="status" value="-1" class="text-white bg-red-900 hover:bg-green-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" @if($requistion->status >= 2) disabled @endif>Reject</button>
+                                                </form>
                                                 @endrole
                                                 @endif
                                                 <hr>
@@ -228,6 +256,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </x-bpartner-layout>
 
 

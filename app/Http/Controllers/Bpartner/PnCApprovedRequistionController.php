@@ -9,6 +9,7 @@ use App\Models\Department;
 use App\Models\EDComment;
 use App\Models\FOComment;
 use App\Models\JobType;
+use App\Models\PublishedJobComment;
 use App\Models\StaffRequistionForm;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,8 @@ class PnCApprovedRequistionController extends Controller
         $jobTypes = JobType::all();
         $departments = Department::all();
         $campuslocations = CampusLocation::all();
-        return view('bpartner.pncapprovedrequistions.edit', compact('pncapprovedrequistion', 'bpcomments','focomments','jobTypes', 'departments','edcomments','campuslocations'));
+        $publishable = PublishedJobComment::where('staff_requistion_forms_id', $pncapprovedrequistion->id)->first();
+        return view('bpartner.pncapprovedrequistions.edit', compact('pncapprovedrequistion', 'bpcomments','focomments','jobTypes', 'departments','edcomments','campuslocations', 'publishable'));
     }
 
     /**
