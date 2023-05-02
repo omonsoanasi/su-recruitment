@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Bpartner;
 use App\Http\Controllers\Controller;
 use App\Models\BusinessPartnerComment;
 use App\Models\Department;
+use App\Models\EDComment;
 use App\Models\FOComment;
 use App\Models\JobType;
 use App\Models\StaffRequistionForm;
@@ -18,7 +19,7 @@ class RequistionController extends Controller
      */
     public function index()
     {
-        $requistions = StaffRequistionForm::where('status', '>=', 0)->where('status','<=', 2)->orderBy('status', 'asc')->get();
+        $requistions = StaffRequistionForm::where('status', '>=', 0)->where('status','<=', 2)->orWhere('status', '=', -2)->orWhere('status', '=', -3)->orderBy('status', 'asc')->get();
         return view('bpartner.requistions.index', compact('requistions'));
     }
 
@@ -53,9 +54,10 @@ class RequistionController extends Controller
     {
         $comments = BusinessPartnerComment::where('staff_requistion_forms_id', $requistion->id)->get();
         $focomments = FOComment::where('staff_requistion_forms_id', $requistion->id)->get();
+        $edComments = EDComment::where('staff_requistion_forms_id', $requistion->id)->get();
         $jobTypes = JobType::all();
         $departments = Department::all();
-        return view('bpartner.requistions.edit', compact('requistion', 'comments','focomments', 'jobTypes', 'departments'));
+        return view('bpartner.requistions.edit', compact('requistion', 'comments','focomments', 'jobTypes', 'departments', 'edComments'));
     }
 
     /**

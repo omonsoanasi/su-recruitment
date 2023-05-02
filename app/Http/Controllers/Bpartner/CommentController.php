@@ -44,7 +44,7 @@ class CommentController extends Controller
         $formId = $validated['staff_requistion_forms_id'];
         $staffFormRequistion = StaffRequistionForm::find($formId);
         $staffFormRequistion->status = $validated['status'];
-//        $staffFormRequistion->save();
+        $staffFormRequistion->save();
 
 //        $financeofficer = User::role('Finance Officer')->get();
 //        $emails = $financeofficer->pluck('email');

@@ -178,6 +178,18 @@
                                                             <fieldset>
                                                                 <legend>Publishing Comments Comments</legend>
                                                                 <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
+                                                                    <div class="md:w-full px-3">
+                                                                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="advertise">
+                                                                            Position Status
+                                                                        </label>
+                                                                        <div class="relative">
+                                                                            <select name="active" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded" id="grid-state">
+                                                                                <option value="1" {{ $pncapprovedrequistion->active == 1 ? 'selected' : '' }}>Active</option>
+                                                                                <option value="0" {{ $pncapprovedrequistion->active == 0 ? 'selected' : '' }}>Inactive</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        @error('active') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                                                    </div>
                                                                     <div class="flex">
                                                                         <h6 class="w-full font-semibold flex-col">Application Deadline.</h6>
                                                                     </div>
@@ -186,7 +198,7 @@
                                                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
                                                                                 <span class="text-red-500">*</span>
                                                                             </label>
-                                                                            <input id="applicationdeadline" type="date" name="applicationdeadline" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="applicationdeadline" required>
+                                                                            <input id="applicationdeadline" type="date" name="applicationdeadline" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="applicationdeadline" value="{{ $pncapprovedrequistion->applicationdeadline }}" required>
                                                                             @error('applicationdeadline') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                                                         </div>
                                                                     </div>
@@ -200,7 +212,9 @@
                                                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
                                                                                 <span class="text-red-500">*</span>
                                                                             </label>
-                                                                            <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="comment" @if($pncapprovedrequistion->status >= 2) readonly @endif ></textarea>
+                                                                            <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="comment" @if($pncapprovedrequistion->status >= 2) readonly @endif >
+                                                                                {{ $publishable->comment }}
+                                                                            </textarea>
                                                                             @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                                                         </div>
                                                                     </div>

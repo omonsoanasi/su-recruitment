@@ -110,9 +110,9 @@
                     </div>
                     <div class="flex w-full md:flex-row justify-center items-center">
                         @php
-                            $id = request()->route('id');
+                            $slug = request()->route('slug');
                         @endphp
-                        @foreach(\App\Models\StaffRequistionForm::where('id',$id)->get() as $index => $vacancy)
+                        @foreach(\App\Models\StaffRequistionForm::where('slug',$slug)->get() as $index => $vacancy)
                             <div class="transition-all ease-in-out duration-1000 flex justify-center mr-0 md:mr-2 w-full">
                                 <div slot="bottom-left" class="w-full">
                                     <div class="p-5 shadow-md m-2 mt-4 bg-white">

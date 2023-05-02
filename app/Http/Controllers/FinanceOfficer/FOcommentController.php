@@ -34,10 +34,11 @@ class FOcommentController extends Controller
             'comment' => 'required|max:2055|min:3',
             'user_id' => 'max:255',
             'staff_requistion_forms_id' => 'max:255',
+            'status' => 'required',
         ]);
         $formId = $validated['staff_requistion_forms_id'];
         $staffFormRequistion = StaffRequistionForm::find($formId);
-        $staffFormRequistion->status = '2';
+        $staffFormRequistion->status = $validated['status'];
         $staffFormRequistion->save();
 
         $foComment = FOComment::updateOrCreate(

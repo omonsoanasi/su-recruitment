@@ -36,7 +36,9 @@ class StaffRequistionForm extends Model
         'skill',
         'technicalexam',
         'onlineexam',
-        'status'
+        'status',
+        'slug',
+        'active',
     ];
 
     public function user(): BelongsTo
