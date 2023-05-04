@@ -68,7 +68,7 @@
                                                     {{ $interviewlist->created_at }}
                                                 </th>
                                                 <td class="px-6 py-4">
-                                                    @if($interviewlist->responded == 1)
+                                                    @if($interviewlist->candidateresponse == 1)
                                                         <span class="text-green-700"> Accepted </span>
                                                     @else
                                                         <span class="text-red-800"> Declined </span>
