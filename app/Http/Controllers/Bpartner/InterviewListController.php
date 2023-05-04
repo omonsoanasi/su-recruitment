@@ -21,7 +21,7 @@ class InterviewListController extends Controller
         $param = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "?") + 1); // Extract the query parameter from the URL
 
         $interviewlists = InterviewInvitation::where('staff_requistion_form_id', $param)->get();
-        return view('bpartner.candidateoffer.index', compact('interviewlists'));
+        return view('bpartner.interviewlist.index', compact('interviewlists'));
     }
 
     /**
