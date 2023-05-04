@@ -47,6 +47,7 @@ use App\Http\Controllers\PnCED\EDCommentController;
 use App\Http\Controllers\PnCED\PnCEDIndexController;
 use App\Http\Controllers\PnCED\PnCEDRequisitionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,9 +64,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/job/{slug}', function () {
+Route::get('/job/{id}', function () {
     return view('job');
 })->name('job');
+Route::get('/', [WelcomeController::class, 'vacancy'])->name('search');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
