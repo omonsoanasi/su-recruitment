@@ -213,7 +213,11 @@
                                                                                 <span class="text-red-500">*</span>
                                                                             </label>
                                                                             <textarea id="editor" name="comment" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" id="comment" @if($pncapprovedrequistion->status >= 2) readonly @endif >
-                                                                                {{ $publishable->comment }}
+                                                                                @if(!$publishable)
+
+                                                                                @else
+                                                                                    <p>{{ $publishable->comment }}</p>
+                                                                                @endif
                                                                             </textarea>
                                                                             @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                                                         </div>
@@ -234,6 +238,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </x-bpartner-layout>
