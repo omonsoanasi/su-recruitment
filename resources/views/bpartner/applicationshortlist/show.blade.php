@@ -442,7 +442,11 @@
                                 <legend></legend>
                                 <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
                                     <div class="flex">
-                                        <h6 class="w-full font-semibold flex-col">Invite Candidate For Interview.</h6>
+                                        @if($interviewinvitation)
+                                            <h6 class="w-full font-semibold flex-col text-red-800">Invitation Already Sent.</h6>
+                                        @else
+                                            <h6 class="w-full font-semibold flex-col">Invite Candidate For Interview.</h6>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
@@ -451,14 +455,14 @@
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                                                 Interview Date
                                             </label>
-                                            <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="" value="{{ old('interviewdate') }}">
+                                            <input name="interviewdate" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewdate" type="date" placeholder="" value="{{ $interviewinvitation->interviewdate ?? old('interviewdate') }}">
                                             @error('interviewdate') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                         <div class="md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                                                 Interview Time
                                             </label>
-                                            <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ old('interviewtime') }}">
+                                            <input name="interviewtime" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewtime" type="time" placeholder="" value="{{ $interviewinvitation->interviewtime ?? old('interviewtime') }}">
                                             @error('interviewtime') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                     </div>
@@ -467,14 +471,14 @@
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                                                 Interview Location
                                             </label>
-                                            <input name="interviewlocation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewlocation" type="text" placeholder="" value="{{ old('interviewlocation') }}">
+                                            <input name="interviewlocation" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="interviewlocation" type="text" placeholder="" value="{{ $interviewinvitation->interviewlocation ?? old('interviewlocation') }}">
                                             @error('interviewlocation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                         <div class="md:w-1/2 px-3">
                                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                                                 Interview Notes/Requirements (Will be sent in the email)
                                             </label>
-                                            <input name="extrarequirements" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="extrarequirements" type="text" placeholder="" value="{{ old('extrarequirements') }}">
+                                            <input name="extrarequirements" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="extrarequirements" type="text" placeholder="" value="{{ $interviewinvitation->extrarequirements ?? old('extrarequirements') }}">
                                             @error('extrarequirements') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                     </div>
@@ -487,8 +491,9 @@
                                                 <span class="text-red-500">*</span>
                                             </label>
                                             <textarea id="editor" name="comments" rows="4" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 disabled:opacity-70" placeholder="maximum 250 characters">
+                                                {{ $interviewinvitation->comments ?? old('comments') }}
                                         </textarea>
-                                            @error('comment') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
+                                            @error('comments') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                 </div>
