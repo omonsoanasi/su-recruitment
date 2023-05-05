@@ -142,7 +142,7 @@
                                     @else
                                         @if($basicinfo)
                                         <div class="bg-white shadow-lg rounded-lg overflow-hidden mt-4">
-                                            <div class="flex w-full justify-center">
+                                            <div class="w-full">
                                                 <div class="p-4">
                                                     <h2 class="font-bold text-xl mb-2">Apply</h2>
                                                         <form method="POST" action="{{ route('candidate.applications.store', $availablejob) }}">
