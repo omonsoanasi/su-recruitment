@@ -28,7 +28,7 @@
                         </nav>
                         <div class="bg-slate-200 overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="rounded-md w-full bg-white px-4 py-4 shadow-md transition transform duration-500 cursor-pointer">
-                                <div class="flex flex-col justify-start">
+                                <div class="flex flex-col justify-start bg-gray-400 rounded-2xl">
                                     <div class="flex justify-between items-center w-full">
                                         <div class="text-lg font-semibold text-bookmark-blue flex space-x-1 items-center mb-2">
                                             <svg class="w-7 h-7 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
                                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                                         </svg>
-                                        <span>{{ $availablejob->campuslocation ? $availablejob->campuslocation->name : 'No location set' }}</span>
+                                        <span class="text-white">{{ $availablejob->campuslocation ? $availablejob->campuslocation->name : 'No location set' }}</span>
                                     </div>
                                     @if($basicinfo)
                                     @else
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                     <div class="bg-white shadow-lg rounded-lg overflow-hidden p-2 mt-4">
-                                        <div class="flex w-full justify-center">
+                                        <div class="flex w-full justify-center bg-gray-200 rounded-md">
                                             <div class="p-4">
                                                 <p class="mb-2"><strong>Job Purpose:</strong></p>
                                                 <div class="mb-2 ml-4 rounded-md shadow">{!! $availablejob->jobpurpose !!}</div>
