@@ -1,7 +1,6 @@
 <x-welcome-layout>
 <!-- component -->
     <div class="font-sans bg-white flex flex-col min-h-screen w-full">
-    <div>
         <div class="bg-gray-200 px-4 py-4">
             <div class="w-full md:max-w-6xl md:mx-auto md:flex md:items-center md:justify-between">
                 <div>
@@ -10,9 +9,9 @@
                     </a>
                     <span class="">Strathmore University People and Culture Department.</span>
                 </div>
-{{--                <div>--}}
-{{--                    <a href="#" class="inline-block py-2 text-gray-800 text-2xl font-bold">Strathmore University People and Culture Department.</a>--}}
-{{--                </div>--}}
+                {{--                <div>--}}
+                {{--                    <a href="#" class="inline-block py-2 text-gray-800 text-2xl font-bold">Strathmore University People and Culture Department.</a>--}}
+                {{--                </div>--}}
 
                 <div>
                     <div class="hidden md:block">
@@ -21,22 +20,22 @@
                             class="inline-block py-1 md:py-4 text-gray-600 mr-6 font-bold"
                         >How it Works</a
                         >
-{{--                        <a--}}
-{{--                            href="#"--}}
-{{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-{{--                        >Solutions</a--}}
-{{--                        >--}}
+                        {{--                        <a--}}
+                        {{--                            href="#"--}}
+                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
+                        {{--                        >Solutions</a--}}
+                        {{--                        >--}}
 
-{{--                        <a--}}
-{{--                            href="#"--}}
-{{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-{{--                        >Pricing</a--}}
-{{--                        >--}}
-{{--                        <a--}}
-{{--                            href="#"--}}
-{{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-{{--                        >Desktop</a--}}
-{{--                        >--}}
+                        {{--                        <a--}}
+                        {{--                            href="#"--}}
+                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
+                        {{--                        >Pricing</a--}}
+                        {{--                        >--}}
+                        {{--                        <a--}}
+                        {{--                            href="#"--}}
+                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
+                        {{--                        >Desktop</a--}}
+                        {{--                        >--}}
                     </div>
                 </div>
                 <div class="hidden md:block">
@@ -81,7 +80,7 @@
 
             <div class="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 -ml-32 mt-12" style="z-index: -1;"></div>
             <!-- component -->
-            <section class="mx-auto max-w-6xl py-12">
+            <section class="mx-auto max-w-9xl py-12">
                 <div class="flex flex-col">
                     <div class="flex flex-col md:flex-row justify-center items-center">
                         <div class="transition-all ease-in-out duration-1000 flex flex-col justify-center"></div>
@@ -97,7 +96,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="transition-all ease-in-out duration-1000 flex flex-col justify-center"></div>
                         <div class="transition-all ease-in-out duration-1000 flex flex-col justify-center">
                             <div slot="middle-right" class="max-w-xs">
                                 <div class="flex flex-col justify-center h-48 p-3">
@@ -117,26 +115,30 @@
                     </div>
                     @if ($submitted)
                         @if(count($results)>0)
-                            <div class="flex flex-wrap">
-                                @foreach ($results as $result)
-                                    <div class="w-full md:w-1/2 lg:w-1/3 p-4">
-                                        <div class="p-5 shadow-md m-2 mt-4">
-                                            <img class="object-scale-down h-30" src="{{ asset('bg-logo/logo.png') }}" alt="logo image">
-{{--                                            <div class="text-xs font-bold uppercase text-teal-700 mt-1 mb-2">{{ $result->department->name }}</div>--}}
-                                            <div class="text-xl font-bold mb-2"><a href="{{ route('job', $result->slug) }}">{{ $result->jobtitle }}</a></div>
-                                            <div class="flex items-center">
-                                                <a href="{{ route('job', $result->slug) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                    <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                        <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v6a2 2 0 01-2 2h-1.172l-1.414 1.414A2 2 0 0110.828 16H9.172a2 2 0 01-1.414-.586L6.758 14H5a2 2 0 01-2-2V5zm2-1a1 1 0 00-1 1v6h14V5a1 1 0 00-1-1H4z" clip-rule="evenodd" />
-                                                    </svg>
-                                                    <span class="">View Details</span>
-                                                </a>
+                            <div class="bg-cyan-50 rounded-lg shadow-lg mt-4 mb-4">
+                                <h2 class="font-bold">Search Results</h2>
+                                <div class="flex flex-wrap">
+                                    @foreach ($results as $result)
+                                        <div class="w-full md:w-1/2 lg:w-1/3 p-4">
+                                            <div class="p-5 shadow-md m-2 mt-4">
+                                                <img class="object-scale-down h-30" src="{{ asset('bg-logo/logo.png') }}" alt="logo image">
+                                                {{--                                            <div class="text-xs font-bold uppercase text-teal-700 mt-1 mb-2">{{ $result->department->name }}</div>--}}
+                                                <div class="text-xl font-bold mb-2"><a href="{{ route('job', $result->slug) }}">{{ $result->jobtitle }}</a></div>
+                                                <div class="flex items-center">
+                                                    <a href="{{ route('job', $result->slug) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                        <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                            <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v6a2 2 0 01-2 2h-1.172l-1.414 1.414A2 2 0 0110.828 16H9.172a2 2 0 01-1.414-.586L6.758 14H5a2 2 0 01-2-2V5zm2-1a1 1 0 00-1 1v6h14V5a1 1 0 00-1-1H4z" clip-rule="evenodd" />
+                                                        </svg>
+                                                        <span class="">View Details</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
+                            <h2 class="font-bold">Other Open Vacancies</h2>
                         @else
                             <p class="text-red-800 font-bold">No results were found. You can explore other available opportunities below:</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -147,20 +149,44 @@
                         @endif
                     @endif
                     <div class="flex flex-wrap">
-                        @foreach(\App\Models\StaffRequistionForm::where('status',4)->where('active', true)->orderBy('id','desc')->limit(6)->get() as $index => $vacancy)
-                            <div class="w-full md:w-1/2 lg:w-1/3 p-4">
-                                <div class="p-5 shadow-md m-2 mt-4">
-                                    <img class="object-scale-down h-30" src="{{ asset('bg-logo/logo.png') }}" alt="logo image">
-                                    <div class="text-xs font-bold uppercase text-teal-700 mt-1 mb-2">{{ $vacancy->department->name }}</div>
-                                    <div class="text-xl font-bold mb-2"><a href="{{ route('job', $vacancy->slug) }}">{{ $vacancy->jobtitle }}</a></div>
-                                    <div class="flex items-center">
-                                        <a href="{{ route('job', $vacancy->slug) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                            <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v6a2 2 0 01-2 2h-1.172l-1.414 1.414A2 2 0 0110.828 16H9.172a2 2 0 01-1.414-.586L6.758 14H5a2 2 0 01-2-2V5zm2-1a1 1 0 00-1 1v6h14V5a1 1 0 00-1-1H4z" clip-rule="evenodd" />
+                        @foreach($vacancies as $vacancy)
+                            <div class="w-full md:w-1/2 lg:w-1/2 p-4">
+                                <div class="group bg-gray-200 p-4 transition-all duration-300 hover:rotate-1 lg:p-8 rounded-md shadow-lg">
+                                    <div class="mb-3 text-right">
+                                        <button class="text-gray-50 transition-all duration-300 hover:scale-110 hover:text-red-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                                                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
                                             </svg>
-                                            <span class="">View Details</span>
-                                        </a>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-x-2">
+                                        <img class="" src="{{ asset('bg-logo/logo.png') }}" alt="logo image" />
+                                        <div>
+{{--                                            <h3 class="text-xl font-bold">{{ $vacancy->jobtitle }}</h3>--}}
+                                        </div>
+                                    </div>
+                                    <div class="my-4">
+                                        <h3 class="text-2xl font-medium">{{ $vacancy->jobtitle }}</h3>
+                                        <span class="text-xs">{{ $vacancy->campusLocation->name }}</span>
+                                        <div class="text-sm font-medium">
+                                            <span class="m-1 ml-0 inline-block text-blue-500">{{ $vacancy->department->name }}</span>
+{{--                                            <span class="m-1 ml-0 inline-block text-yellow-500">CSS</span>--}}
+{{--                                            <span class="m-1 ml-0 inline-block text-pink-500">FIGMA</span>--}}
+                                            <span class="m-1 ml-0 inline-block {{ Carbon\Carbon::parse($vacancy->applicationdeadline)->diffInHours(now()) < 48 ? 'text-red-500 font-bold' : 'text-lime-500' }}">Deadline: {{ $vacancy->applicationdeadline }}</span>
+{{--                                            <span class="m-1 ml-0 inline-block text-blue-500">Illustrator</span>--}}
+                                        </div>
+                                        <div class="mt-2 text-sm text-gray-600">
+                                            @if ($vacancy->numberofvacancies == 1)
+                                                {{ $vacancy->numberofvacancies }} - Open Post
+                                            @else
+                                                {{ $vacancy->numberofvacancies }} - Open Posts
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium">{{ $vacancy->jobtype->name }}</span>
+                                        <a href="{{ route('job', $vacancy->slug) }}" class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80">Apply Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -169,10 +195,42 @@
                 </div>
             </section>
             <div class="h-10 bg-white rounded-t-lg border-b border-gray-100"></div>
-
-        <p class="text-center p-4 text-gray-600 mt-10">
-            Created by Strathmore University ICTS-EAS Department
-        </p>
+{{--            <div class="group bg-orange-200 p-4 transition-all duration-300 hover:rotate-1 lg:p-8">--}}
+{{--                <div class="mb-3 text-right">--}}
+{{--                    <button class="text-gray-50 transition-all duration-300 hover:scale-110 hover:text-red-600">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">--}}
+{{--                            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />--}}
+{{--                        </svg>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--                <div class="flex items-center gap-x-2">--}}
+{{--                    <img class="aspect-[2/2] w-16" src="https://img.icons8.com/fluency/48/null/mac-os.png" />--}}
+{{--                    <div>--}}
+{{--                        <h3 class="text-xl font-bold text-gray-50">Apple</h3>--}}
+{{--                        <span class="text-xs text-gray-300">New location, USA</span>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="my-4">--}}
+{{--                    <h3 class="text-2xl font-medium text-gray-200">UI/UX Designer</h3>--}}
+{{--                    <div class="text-sm font-medium">--}}
+{{--                        <span class="m-1 ml-0 inline-block text-blue-500">HTML</span>--}}
+{{--                        <span class="m-1 ml-0 inline-block text-yellow-500">CSS</span>--}}
+{{--                        <span class="m-1 ml-0 inline-block text-pink-500">FIGMA</span>--}}
+{{--                        <span class="m-1 ml-0 inline-block text-lime-500">Ad. XD</span>--}}
+{{--                        <span class="m-1 ml-0 inline-block text-blue-500">Illustrator</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="mt-2 text-sm text-gray-400">$60K - $100K per year</div>--}}
+{{--                </div>--}}
+{{--                <div class="flex items-center justify-between">--}}
+{{--                    <span class="text-sm font-medium text-gray-50">Full Time</span>--}}
+{{--                    <a class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80">Apply Now</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <!-- Display the pagination links -->
+            {{ $vacancies->links() }}
+            <p class="text-center p-4 text-gray-600 mt-10">
+                Created by Strathmore University ICTS-EAS Department
+            </p>
+        </div>
     </div>
-</div>
 </x-welcome-layout>

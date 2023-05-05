@@ -64,7 +64,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/job/{id}', function () {
+Route::get('/job/{slug}', function () {
     return view('job');
 })->name('job');
 Route::get('/', [WelcomeController::class, 'vacancy'])->name('search');
