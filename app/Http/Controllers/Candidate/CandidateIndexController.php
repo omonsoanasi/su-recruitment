@@ -14,7 +14,7 @@ class CandidateIndexController extends Controller
 //    }
     public function index()
     {
-        $availablejobs = StaffRequistionForm::where('status',4)->where('status', true)->whereDate('applicationdeadline', '>=', now())->get();
+        $availablejobs = StaffRequistionForm::where('status',4)->where('active', true)->whereDate('applicationdeadline', '>=', now())->get();
         return view('candidate.availablejobs.index', compact('availablejobs'));
     }
 }
