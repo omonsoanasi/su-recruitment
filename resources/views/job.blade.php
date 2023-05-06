@@ -60,7 +60,7 @@
             </svg>
         </div>
 
-        <div class="max-w-4xl mx-auto bg-white shadow-lg relative z-20 hidden md:block" style="margin-top: -320px; border-radius: 20px;">
+        <div class="max-w-4xl mx-auto bg-white shadow-lg relative z-20 md:block" style="margin-top: -320px; border-radius: 20px;">
             <div class="h-20 w-20 rounded-full bg-yellow-500 absolute top-0 left-0 -ml-10 -mt-10" style="z-index: -1;"></div>
 
             <div class="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 -ml-32 mt-12" style="z-index: -1;"></div>
