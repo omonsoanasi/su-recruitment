@@ -9,10 +9,6 @@
                     </a>
                     <span class="">Strathmore University People and Culture Department.</span>
                 </div>
-                {{--                <div>--}}
-                {{--                    <a href="#" class="inline-block py-2 text-gray-800 text-2xl font-bold">Strathmore University People and Culture Department.</a>--}}
-                {{--                </div>--}}
-
                 <div>
                     <div class="hidden md:block">
                         <a
@@ -20,25 +16,9 @@
                             class="inline-block py-1 md:py-4 text-gray-600 mr-6 font-bold"
                         >How it Works</a
                         >
-                        {{--                        <a--}}
-                        {{--                            href="#"--}}
-                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-                        {{--                        >Solutions</a--}}
-                        {{--                        >--}}
-
-                        {{--                        <a--}}
-                        {{--                            href="#"--}}
-                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-                        {{--                        >Pricing</a--}}
-                        {{--                        >--}}
-                        {{--                        <a--}}
-                        {{--                            href="#"--}}
-                        {{--                            class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"--}}
-                        {{--                        >Desktop</a--}}
-                        {{--                        >--}}
                     </div>
                 </div>
-                <div class="hidden md:block">
+                <div class="md:block">
                     @if (Route::has('login'))
                         @auth
                             <a href="{{ url('/dashboard') }}" class="inline-block py-2 px-4 text-gray-700 bg-white hover:bg-gray-100 rounded-lg">Dashboard</a>
@@ -75,7 +55,7 @@
             </svg>
         </div>
 
-        <div class="max-w-4xl mx-auto bg-white shadow-lg relative z-20 hidden md:block" style="margin-top: -320px; border-radius: 20px;">
+        <div class="max-w-4xl mx-auto bg-white shadow-lg relative z-20 md:block" style="margin-top: -320px; border-radius: 20px;">
             <div class="h-20 w-20 rounded-full bg-yellow-500 absolute top-0 left-0 -ml-10 -mt-10" style="z-index: -1;"></div>
 
             <div class="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 -ml-32 mt-12" style="z-index: -1;"></div>
