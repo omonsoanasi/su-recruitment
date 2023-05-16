@@ -29,7 +29,7 @@ class CandidateWorkExpController extends Controller
      */
     public function store(Request $request)
     {
-//        try{
+//        try {
         $validated = $request->validate([
             'user_id' => 'required',
             'jobtitle' => 'required',
