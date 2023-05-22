@@ -32,7 +32,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
                             <div class="p-6 text-gray-900">
                                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display" id="businessPartnerRequisitions">
                                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
@@ -44,7 +44,7 @@
                                             <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
                                                 Application Deadline
                                             </th>
-                                            <th scope="col" colspan="5" class="px-6 py-3">
+                                            <th scope="col" class="px-6 py-3">
                                                 <span class="flex justify-end">Statuses</span>
                                             </th>
                                         </tr>

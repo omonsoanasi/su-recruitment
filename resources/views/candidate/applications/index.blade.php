@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12 w-full">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class = "content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
@@ -29,7 +29,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
                             <div class="p-6 text-gray-900">
                                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" id="businessPartnerRequisitions">
                                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">

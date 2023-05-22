@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12 w-full">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class = "content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
@@ -29,7 +29,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-2">
                             <div class="p-6 text-gray-900">
                                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display" id="businessPartnerRequisitions">
                                         <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
@@ -76,7 +76,7 @@
                                                     <div class="flex justify-end">
                                                         <div class="flex space-x-2">
                                                             @if($pncapprovedrequistion->status == 3)
-                                                                <a href="{{ route('bpartner.pncapprovedrequistions.edit', $pncapprovedrequistion->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Take Action</a>
+                                                                <a href="{{ route('bpartner.pncapprovedrequistions.edit', $pncapprovedrequistion->id) }}" class="px-4 py-2 bg-orange-300 hover:bg-red-300 text-white rounded-md">Take Action</a>
                                                             @elseif($pncapprovedrequistion->status == 4)
                                                                 <a href="{{ route('bpartner.pncapprovedrequistions.edit', $pncapprovedrequistion->id) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Published</a>
                                                             @endif
