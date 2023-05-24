@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\QualificationTypeController;
 use App\Http\Controllers\Admin\ReferralSourceController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\CandidateAuthController;
 use App\Http\Controllers\Bpartner\ApplicationDetailController;
 use App\Http\Controllers\Bpartner\ApplicationLongListController;
 use App\Http\Controllers\Bpartner\ApplicationShortListController;
@@ -68,6 +69,12 @@ Route::get('/job/{slug}', function () {
     return view('job');
 })->name('job');
 Route::get('/', [WelcomeController::class, 'vacancy'])->name('search');
+Route::post('/userLogin', [CandidateAuthController::class, 'userLogin'])->name('userLogin');
+
+//route for staff login
+Route::get('/app', function (){
+    return view('auth.app');
+})->name('app');
 
 
 Route::get('/dashboard', function () {

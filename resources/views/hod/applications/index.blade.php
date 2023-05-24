@@ -22,7 +22,7 @@
                                     <div class = "flex items-center">
                                         <svg class = "w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
                                         <a href="#" class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Job Title : <span class="font-bold text-xl">
-                                            @foreach ($applicationshortlists as $application)
+                                            @foreach ($applicationlonglists as $application)
                                                 {{ $application->staffRequistionForm->jobtitle }}
                                                 @break
                                             @endforeach
@@ -53,7 +53,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($applicationshortlists as $applicationinformation)
+                                        @foreach($applicationlonglists as $applicationinformation)
                                             <tr class="border-b border-gray-200 dark:border-gray-700">
                                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                                     {{ $applicationinformation->applicantBasicInfo->title }} {{ $applicationinformation->applicantBasicInfo->firstname }} {{ $applicationinformation->applicantBasicInfo->lastname }}

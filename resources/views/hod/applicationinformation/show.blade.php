@@ -434,7 +434,7 @@
                             <legend></legend>
                             <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
                                 <div class="flex">
-                                    <h6 class="w-full font-semibold flex-col">Feedback for Final Shortlisting.</h6>
+                                    <h6 class="w-full font-semibold flex-col">Feedback for Shortlisting.</h6>
                                 </div>
                             </div>
                             <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mt-9">
