@@ -35,22 +35,10 @@ return [
     |
     */
 
-//    'guards' => [
-//        'web' => [
-//            'driver' => 'session',
-//            'provider' => 'users',
-//        ],
-//    ],
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
-        ],
-
-        'ldap' => [
-            'driver' => 'session',
-            'provider' => 'ldap_users',
         ],
     ],
 
@@ -71,51 +59,17 @@ return [
     |
     */
 
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
 
-        'ldap_users' => [
-            'driver' => 'ldap',
-            'model' => LdapRecord\Models\ActiveDirectory\User::class,
-            'rules' => [],
-            'database' => [
-                'model' => App\Models\User::class,
-                'sync_passwords' => false,
-                'sync_attributes' => [
-                    'name' => 'cn',
-                    'username' => 'samaccountname',
-                    'email' => 'mail',
-                ],
-            ],
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
-
-
-//    'providers' => [
-//        'users' => [
-//            'driver' => 'eloquent',
-//            'model' => App\Models\User::class,
-//        ],
-//
-//        'users' => [
-//            'driver' => 'ldap',
-//            'model' => LdapRecord\Models\ActiveDirectory\User::class,
-//            'rules' => [],
-//            'database' => [
-//                'model' => App\Models\User::class,
-//                'sync_passwords' => false,
-//                'sync_attributes' => [
-//                    'name' => 'cn',
-//                    'username' => 'samaccountname',
-//                    'email' => 'mail',
-//                ],
-//            ],
-//        ],
-//    ],
 
     /*
     |--------------------------------------------------------------------------
