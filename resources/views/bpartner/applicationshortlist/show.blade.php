@@ -9,6 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    @role('Admin')
+                    <div class="text-center mt-4">
+                        <span class="text-gray-500">You are viewing this as a Business Partner, Please switch to <a href="{{ route('admin.index') }}" class="text-blue-500 hover:text-blue-700">Administrator's profile here.</a></span>
+                    </div>
+                    @endrole
                     <div class = "content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4 ">
                         <nav class = "flex px-5 py-3 text-gray-700  rounded-lg bg-gray-50 dark:bg-[#1E293B] " aria-label="Breadcrumb">
                             <ol class = "inline-flex items-center space-x-1 md:space-x-3">

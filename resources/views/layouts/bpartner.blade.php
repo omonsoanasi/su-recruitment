@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Strathmore University') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -55,7 +55,6 @@
                     </svg>
                 </button>
             </div>
-
             <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-orange-300 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.index') }}">Dashboard</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white rounded-lg dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-orange-300 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ route('bpartner.requistions.index') }}">Employee Requisition</a>

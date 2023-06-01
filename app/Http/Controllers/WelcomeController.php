@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\StaffRequistionForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,8 @@ class WelcomeController extends Controller
             ->where('applicationdeadline', '>=', now()) // where application deadline has not passed
             ->paginate(6);
         $submitted = $request->has('query');
-        return view('welcome', compact('vacancies', 'results', 'submitted'));
+        $about = About::orderBy('id','desc')->limit(1)->first();
+        return view('welcome', compact('vacancies', 'results', 'submitted', 'about'));
     }
 
 }

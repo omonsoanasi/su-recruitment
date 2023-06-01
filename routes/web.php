@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ApplicationAttachmentController;
 use App\Http\Controllers\Admin\ApplicationStatusController;
 use App\Http\Controllers\Admin\CampusLocationController;
@@ -139,6 +140,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
         Route::resource('/referralsource', ReferralSourceController::class);
         Route::resource('/qualificationtype', QualificationTypeController::class);
         Route::resource('/applicationattachment', ApplicationAttachmentController::class);
+        Route::resource('/about', AboutController::class);
     });
 });
 

@@ -83,12 +83,12 @@ class AuthenticatedSessionController extends Controller
             ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 2);
             ldap_set_option($ad, LDAP_OPT_REFERRALS, 1);
             $bind = @ldap_bind($ad, "{$request->input('username')}@{$ldap_domain}", $request->input('password'));
-
             // test
             // $bind = true;
 
             // if was able to connect successfully
             if ($bind) {
+                dd($bind);
                 // try and find if user exists in local db
                 $findUser = User::where('username', $request->input('username'))->get();
 
