@@ -118,6 +118,39 @@
 </div>
 <script src="{{ asset('datatables/DataTables/datatables.min.js') }}"></script>
 <script>
+    //related to staff script
+        const relatedToStaffSelect = document.getElementById('relatedtostaff');
+        const relationshiptypeContainer = document.getElementById('relationshiptypeContainer');
+        const nameofstaffContainer = document.getElementById('nameofstaffContainer');
+        const lawViolationSelect = document.getElementById('lawviolation');
+        const violationdescContainer = document.getElementById('violationdescContainer');
+        const exploitationSelect = document.getElementById('exploitation');
+        const exploitationdescContainer = document.getElementById('exploitationdescContainer');
+
+    relatedToStaffSelect.addEventListener('change', function() {
+        if (relatedToStaffSelect.value === '0') {
+        relationshiptypeContainer.style.display = 'none';
+        nameofstaffContainer.style.display = 'none';
+    } else {
+        relationshiptypeContainer.style.display = 'block';
+        nameofstaffContainer.style.display = 'block';
+    }
+    });
+    lawViolationSelect.addEventListener('change', function() {
+        if (lawViolationSelect.value === '0') {
+            violationdescContainer.style.display = 'none';
+        } else {
+            violationdescContainer.style.display = 'block';
+        }
+    });
+
+    exploitationSelect.addEventListener('change', function() {
+        if (exploitationSelect.value === '0') {
+            exploitationdescContainer.style.display = 'none';
+        } else {
+            exploitationdescContainer.style.display = 'block';
+        }
+    });
 
     //datatables script
     $(document).ready(function () {

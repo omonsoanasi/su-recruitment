@@ -71,7 +71,6 @@
                                                 <select name="gender" id="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " >
                                                     <option value="Male" {{ (old('gender') == 'Male' || (isset($candidateInfo) && $candidateInfo->gender == 'Male')) ? 'selected' : '' }}>Male</option>
                                                     <option value="Female" {{ (old('gender') == 'Female' || (isset($candidateInfo) && $candidateInfo->gender == 'Female')) ? 'selected' : '' }}>Female</option>
-                                                    <option value="Other" {{ (old('gender') == 'Other' || (isset($candidateInfo) && $candidateInfo->gender == 'Other')) ? 'selected' : '' }}>Other</option>
                                                 </select>
                                                 <label for="gender" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Gender <span class="text-red-800 font-semibold">*</span></label>
                                             </div>
@@ -125,19 +124,21 @@
                                             </div>
                                             @error('nationality') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
                                             <div class="relative z-0 w-full mb-6 group">
-                                                <select name="relatedtostaff" id="relatedtostaff" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " >
+                                                <select name="relatedtostaff" id="relatedtostaff" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
                                                     <option value="0" {{ (old('relatedtostaff') == '0' || (isset($candidateInfo) && $candidateInfo->relatedtostaff == '0')) ? 'selected' : '' }}>No</option>
                                                     <option value="1" {{ (old('relatedtostaff') == '1' || (isset($candidateInfo) && $candidateInfo->relatedtostaff == '1')) ? 'selected' : '' }}>Yes</option>
                                                 </select>
                                                 <label for="relatedtostaff" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Related to Any Strathmore Staff? <span class="text-red-800 font-semibold">*</span></label>
                                             </div>
                                             @error('relatedtostaff') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                            <div class="relative z-0 w-full mb-6 group">
+
+                                            <div class="relative z-0 w-full mb-6 group" id="relationshiptypeContainer" style="display: none;">
                                                 <input type="text" name="relationshiptype" id="relationshiptype" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  value="{{ isset($candidateInfo) ? $candidateInfo->relationshiptype : old('relationshiptype') }}" />
                                                 <label for="relationshiptype" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">How are you related </label>
                                             </div>
                                             @error('relationshiptype') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                            <div class="relative z-0 w-full mb-6 group">
+
+                                            <div class="relative z-0 w-full mb-6 group" id="nameofstaffContainer" style="display: none;">
                                                 <input type="text" name="nameofstaff" id="nameofstaff" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  value="{{ isset($candidateInfo) ? $candidateInfo->nameofstaff : old('nameofstaff') }}" />
                                                 <label for="nameofstaff" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name of Staff </label>
                                             </div>
@@ -226,18 +227,18 @@
                                     <fieldset class="bg-blue-50 rounded-md">
                                         <legend class="mb-4 text-xl font-bold text-emerald-700">Other Information</legend>
                                         <div>
-                                            <p>Have you ever been arrested, indicted or summoned in court as a defendant in a criminal proceeding or convicted, tried or imprisoned for the violation of any law(Excluding minor traffic violations)</p>
+                                            <p>Have you ever been arrested, indicted or summoned in court as a defendant in a criminal proceeding or convicted, tried or imprisoned for the violation of any law (Excluding minor traffic violations)</p>
                                             <div class="grid md:grid-cols-2 md:gap-6">
                                                 <div class="relative z-0 w-full mb-6 group">
-                                                    <select name="lawviolation" id="lawviolation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " >
+                                                    <select name="lawviolation" id="lawviolation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
                                                         <option value="0" {{ (old('lawviolation') == '0' || (isset($candidateInfo) && $candidateInfo->lawviolation == '0')) ? 'selected' : '' }}>No</option>
                                                         <option value="1" {{ (old('lawviolation') == '1' || (isset($candidateInfo) && $candidateInfo->lawviolation == '1')) ? 'selected' : '' }}>Yes</option>
                                                     </select>
-                                                    <label for="lawviolation" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> <span class="text-red-800 font-semibold">*</span></label>
+                                                    <label for="lawviolation" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"><span class="text-red-800 font-semibold">*</span></label>
                                                 </div>
                                                 @error('lawviolation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                                <div class="relative z-0 w-full mb-6 group">
-                                                    <textarea id="editor_5" name="violationdesc" rows="4" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Describe the Law Violation"  >{!! isset($candidateInfo) ? $candidateInfo->violationdesc : old('violationdesc') !!}</textarea>
+                                                <div class="relative z-0 w-full mb-6 group" id="violationdescContainer" style="display: none;">
+                                                    <textarea id="editor_5" name="violationdesc" rows="4" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Describe the Law Violation">{!! isset($candidateInfo) ? $candidateInfo->violationdesc : old('violationdesc') !!}</textarea>
                                                     <label for="violationdesc" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"><span class="text-red-800 font-semibold">*</span></label>
                                                 </div>
                                                 @error('violationdesc') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
@@ -247,15 +248,15 @@
                                             <p>Have you ever been involved in any exploitation or abuse? E.g. Sexual abuse etc</p>
                                             <div class="grid md:grid-cols-2 md:gap-6">
                                                 <div class="relative z-0 w-full mb-6 group">
-                                                    <select name="exploitation" id="exploitation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " >
+                                                    <select name="exploitation" id="exploitation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
                                                         <option value="0" {{ (old('exploitation') == '0' || (isset($candidateInfo) && $candidateInfo->exploitation == '0')) ? 'selected' : '' }}>No</option>
                                                         <option value="1" {{ (old('exploitation') == '1' || (isset($candidateInfo) && $candidateInfo->exploitation == '1')) ? 'selected' : '' }}>Yes</option>
                                                     </select>
-                                                    <label for="exploitation" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"> <span class="text-red-800 font-semibold">*</span></label>
+                                                    <label for="exploitation" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"><span class="text-red-800 font-semibold">*</span></label>
                                                 </div>
                                                 @error('exploitation') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
-                                                <div class="relative z-0 w-full mb-6 group">
-                                                    <textarea id="editor_4" name="exploitationdesc" rows="4" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Describe the Exploitation or abuse"  >{!! isset($candidateInfo) ? $candidateInfo->exploitationdesc : old('exploitationdesc') !!}</textarea>
+                                                <div class="relative z-0 w-full mb-6 group" id="exploitationdescContainer" style="display: none;">
+                                                    <textarea id="editor_4" name="exploitationdesc" rows="4" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Describe the Exploitation or abuse">{!! isset($candidateInfo) ? $candidateInfo->exploitationdesc : old('exploitationdesc') !!}</textarea>
                                                     <label for="othersource" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"><span class="text-red-800 font-semibold">*</span></label>
                                                 </div>
                                                 @error('exploitationdesc') <span class="text-red-500 text-sm"> {{ $message }}</span> @enderror
@@ -270,65 +271,65 @@
                             </div>
                             <div id="second" class="hidden p-4">
                                 @if(count($candidateacademicinfos) > 0)
-                                <div class="p-6 text-gray-900">
-                                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                            <tr>
-                                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                    Qualification Type
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Qualification Title
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                   Institution Name
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Completion Date
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
-                                                    Actions
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($candidateacademicinfos as $academicinfo)
-                                                <tr class="border-b border-gray-200 dark:border-gray-700">
-                                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                        {{ $academicinfo->qualificationtype->name }}
+                                    <div class="p-6 text-gray-900">
+                                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                                        Qualification Type
                                                     </th>
-                                                    <td class="px-6 py-4">
-                                                        {{ $academicinfo->qualificationtitle }}
-                                                    </td>
-                                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                        {{ $academicinfo->institutionname }}
+                                                    <th scope="col" class="px-6 py-3">
+                                                        Qualification Title
                                                     </th>
-                                                    <td class="px-6 py-4">
-                                                        {{ $academicinfo->todate }}
-                                                    </td>
-                                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                                        <div class="flex justify-end">
-                                                            <div class="flex space-x-2">
-                                                                <a href="{{ asset($academicinfo->academiccert) }}" target="_blank" class="px-4 py-2 bg-cyan-500 hover:bg-gray-800 text-white rounded-md">Uploaded File</a>
-
-                                                                <a href="{{ route('candidate.academicinfo.edit', $academicinfo) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Edit</a>
-
-                                                                <form class="px-4 py-2 bg-red-500 hover:bg-red-800 text-white rounded-md" method="POST" action="{{ route('candidate.academicinfo.destroy', $academicinfo->id) }}" onsubmit="return confirm('You are about to remove academic details...')">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit">Remove</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
+                                                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                                        Institution Name
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        Completion Date
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                                                        Actions
                                                     </th>
                                                 </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($candidateacademicinfos as $academicinfo)
+                                                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                            {{ $academicinfo->qualificationtype->name }}
+                                                        </th>
+                                                        <td class="px-6 py-4">
+                                                            {{ $academicinfo->qualificationtitle }}
+                                                        </td>
+                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                            {{ $academicinfo->institutionname }}
+                                                        </th>
+                                                        <td class="px-6 py-4">
+                                                            {{ $academicinfo->todate }}
+                                                        </td>
+                                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                                            <div class="flex justify-end">
+                                                                <div class="flex space-x-2">
+                                                                    <a href="{{ asset($academicinfo->academiccert) }}" target="_blank" class="px-4 py-2 bg-cyan-500 hover:bg-gray-800 text-white rounded-md">Uploaded File</a>
 
-                                </div>
+                                                                    <a href="{{ route('candidate.academicinfo.edit', $academicinfo) }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md">Edit</a>
+
+                                                                    <form class="px-4 py-2 bg-red-500 hover:bg-red-800 text-white rounded-md" method="POST" action="{{ route('candidate.academicinfo.destroy', $academicinfo->id) }}" onsubmit="return confirm('You are about to remove academic details...')">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit">Remove</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 @else
                                     <p>You have not added academic details yet</p>
                                 @endif
@@ -350,7 +351,7 @@
                                             <!--Header End-->
                                         </div>
                                         <!-- Modal Content-->
-                                        <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-200 rounded text-center text-gray-500">
+                                        <div class="flex w-full h-auto py-10 px-2 justify-center items-center bg-gray-50 rounded text-center text-gray-500">
                                             <form method="POST" action="{{ route('candidate.academicinfo.store') }}" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="grid md:grid-cols-2 md:gap-6">
