@@ -60,7 +60,7 @@
 
             <div class="h-5 w-5 rounded-full bg-blue-500 absolute top-0 left-0 -ml-32 mt-12" style="z-index: -1;"></div>
             <!-- component -->
-            <section class="mx-auto max-w-9xl py-12">
+            <section class="mx-auto max-w-7xl py-12">
                 <div class="flex flex-col">
                     <div class="flex flex-col md:flex-row justify-center items-center">
                         <div class="transition-all ease-in-out duration-1000 flex flex-col justify-center"></div>
@@ -167,26 +167,25 @@
                                         <span class="text-sm font-medium">{{ $vacancy->jobtype->name }}</span>
                                         <a href="{{ route('job', $vacancy->slug) }}" class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80">Apply Now</a>
                                     </div>
-                                    <div class="flex items-center justify-center mt-4">
-                                        <a href="#" class="mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                                                <path d="M17.26 2H6.74A4.74 4.74 0 002 6.74v10.52A4.74 4.74 0 006.74 22h10.52A4.74 4.74 0 0022 17.26V6.74A4.74 4.74 0 0017.26 2zm-.26 13.93h-2.8v-4.4c0-1.14-.02-2.6-1.6-2.6-1.6 0-1.84 1.26-1.84 2.55v4.45h-2.8V8.68h2.65v1.36h.04c.37-.7 1.28-1.43 2.62-1.43 2.8 0 3.32 1.85 3.32 4.26v4.34z" />
-                                            </svg>
+                                    <div class="social-icons">
+                                        Share this vacancy:
+                                        <a href="https://twitter.com/intent/tweet?text=Checkout+this+exciting+opportunity+at+Strathmore+University!&url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                                                <path d="M21 5.01C21.5 5.71 21.5 6.63 21 7.33l-8.06 7.97 2.38 2.38c.39.39.39 1.03 0 1.42-.2.2-.45.29-.71.29-.26 0-.51-.1-.71-.29L2.5 8.84C2.2 8.55 2 8.11 2 7.66c0-.46.2-.9.5-1.21.31-.3.75-.5 1.21-.5.45 0 .9.2 1.21.5l2.38 2.38 8.06-7.97c.49-.49 1.27-.49 1.76 0z" />
-                                            </svg>
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                                                <path d="M22.363 7.108c-.837.37-1.724.622-2.66.738a4.692 4.692 0 001.91-2.59 9.35 9.35 0 01-2.962 1.13A4.673 4.673 0 0015.813 4c-2.69 0-4.876 2.186-4.876 4.876 0 .383.044.755.127 1.114-4.05-.204-7.64-2.147-10.046-5.09a4.826 4.826 0 00-.63 2.346c0 1.607.778 3.025 1.962 3.858-.724-.023-1.404-.222-1.997-.548v.055c0 2.243 1.59 4.11 3.697 4.54a4.792 4.792 0 01-2.003.084c.563 1.786 2.196 3.09 4.125 3.127a9.483 9.483 0 01-5.594 1.801c-.363 0-.725-.021-1.08-.062a13.46 13.46 0 007.296 2.137c8.695 0 13.448-7.373 13.448-13.747 0-.208-.005-.415-.015-.62a9.735 9.735 0 002.39-2.466l-.047-.02z" />
-                                            </svg>
+                                        <a href="https://www.instagram.com/?url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="mr-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                                                <path d="M20 3H4a2 2 0 00-2 2v14a2 2 0 002 2h16a2 2 0 002-2V5a2 2 0 00-2-2zm-2 6h-4V7h4v2zm2 2h-4v2h4v-2zm0 4h-4v2h4v-2zm-6-6h-4V7h4v2zm0 4h-4v2h4v-2zm0 4h-4v2h4v-2zm-6-6H6V7h4v2zm0 4H6v2h4v-2zm0 4H6v2h4v-2z" />
-                                            </svg>
+                                        <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="whatsapp://send?text=Checkout%20this%20exciting%20opportunity%20at%20Strathmore%20University!%20{{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="mailto:?subject=Exciting%20Job%20Opportunity&body=Checkout%20this%20exciting%20job%20opportunity%20at%20Strathmore%20University!%0D%0A%0D%0A{{ urlencode(route('job', $vacancy->slug)) }}">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -196,7 +195,7 @@
                 </div>
             </section>
             <div class="h-10 bg-white rounded-t-lg border-b border-gray-100"></div>
-            <div class="group bg-gray-400 p-4 transition-all duration-300 hover:rotate-1 lg:p-8">
+            <div class="group bg-red-500 justify-items-center flex-wrap p-4 transition-all duration-300 hover:rotate-1 lg:p-8 rounded-lg">
                 <div class="flex items-center gap-x-2">
                     <img class="" src="{{ asset('bg-logo/logo.png') }}" />
                     <div>
@@ -211,7 +210,7 @@
                             {{ $about->aboutContent }}
                         </p>
                     </div>
-                    <div class="mt-2 text-sm text-gray-400">$60K - $100K per year</div>
+{{--                    <div class="mt-2 text-sm text-gray-400">$60K - $100K per year</div>--}}
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-sm font-medium text-gray-50"></span>
