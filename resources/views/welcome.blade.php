@@ -207,14 +207,14 @@
                     <h3 class="text-2xl font-medium text-white">{{ $about->aboutTitle ?? 'People and Culture' }}</h3>
                     <div class="text-sm font-medium">
                         <p>
-                            {{ $about->aboutContent }}
+                            {{ $about->aboutContent ?? 'Test Content' }}
                         </p>
                     </div>
 {{--                    <div class="mt-2 text-sm text-gray-400">$60K - $100K per year</div>--}}
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-sm font-medium text-gray-50"></span>
-                    <a class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80" href="{{ $about->mainUrl }}">University Website</a>
+                    <a class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80" href="{{ $about->mainUrl ?? 'Test Url' }}">University Website</a>
                 </div>
             </div>
             <!-- Display the pagination links -->
