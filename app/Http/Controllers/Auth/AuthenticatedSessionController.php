@@ -88,7 +88,6 @@ class AuthenticatedSessionController extends Controller
 
             // if was able to connect successfully
             if ($bind) {
-                dd($bind);
                 // try and find if user exists in local db
                 $findUser = User::where('username', $request->input('username'))->get();
 
