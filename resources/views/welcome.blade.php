@@ -214,7 +214,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-sm font-medium text-gray-50"></span>
-                    <a class="font-medium text-blue-500 transition-all duration-300 group-hover:text-blue-500/80" href="{{ $about->mainUrl ?? 'Test Url' }}">University Website</a>
+                    <a class="font-medium text-blue-900 transition-all duration-300 group-hover:text-blue-950/80" href="{{ $about->mainUrl ?? 'Test Url' }}">University Website</a>
                 </div>
             </div>
             <!-- Display the pagination links -->
