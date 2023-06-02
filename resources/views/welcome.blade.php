@@ -195,7 +195,7 @@
                 </div>
             </section>
             <div class="h-10 bg-white rounded-t-lg border-b border-gray-100"></div>
-            <div class="group bg-red-500 justify-items-center flex-wrap p-4 transition-all duration-300 hover:rotate-1 lg:p-8 rounded-lg">
+            <div class="group bg-gray-500 justify-items-center flex-wrap p-4 transition-all duration-300 hover:rotate-1 lg:p-8 rounded-lg text-white">
                 <div class="flex items-center gap-x-2">
                     <img class="" src="{{ asset('bg-logo/logo.png') }}" />
                     <div>
