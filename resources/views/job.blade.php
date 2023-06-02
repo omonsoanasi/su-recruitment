@@ -135,7 +135,12 @@
                                             <div class="text-sm text-gray-700 leading-snug mt-2 mb-2 ml-4 rounded-md shadow">{!! $vacancy->other !!}</div>
                                             <div class="bg-cyan-50 text-black font-bold">Knowledge and Skills</div>
                                             <div class="text-sm text-gray-700 leading-snug mt-2 mb-2 ml-4 rounded-md shadow">{!! $vacancy->skill !!}</div>
-                                            <div class="text-xl font-bold text-green-600 mt-4"><a href="{{ route('candidate.availablejobs.edit', $vacancy->id) }}">Apply Now</a></div>
+                                            <div class="flex justify-center mt-4 mb-4">
+                                                <a href="{{ route('candidate.availablejobs.edit', $vacancy->id) }}" class="text-xl font-bold text-green-600 py-2 px-4 bg-green-200 rounded-md">Apply</a>
+                                            </div>
+                                            <hr>
+                                            <span class="flex justify-center font-bold mx-4 text-2xl">Or</span>
+                                            <hr>
                                             <div class="social-icons">
                                                 Share this vacancy:
                                                 <a href="https://twitter.com/intent/tweet?text=Checkout+this+exciting+opportunity+at+Strathmore+University!&url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
