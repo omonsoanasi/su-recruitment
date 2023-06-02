@@ -136,6 +136,27 @@
                                             <div class="bg-cyan-50 text-black font-bold">Knowledge and Skills</div>
                                             <div class="text-sm text-gray-700 leading-snug mt-2 mb-2 ml-4 rounded-md shadow">{!! $vacancy->skill !!}</div>
                                             <div class="text-xl font-bold text-green-600 mt-4"><a href="{{ route('candidate.availablejobs.edit', $vacancy->id) }}">Apply Now</a></div>
+                                            <div class="social-icons">
+                                                Share this vacancy:
+                                                <a href="https://twitter.com/intent/tweet?text=Checkout+this+exciting+opportunity+at+Strathmore+University!&url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="https://www.instagram.com/?url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="whatsapp://send?text=Checkout%20this%20exciting%20opportunity%20at%20Strathmore%20University!%20{{ urlencode(route('job', $vacancy->slug)) }}" target="_blank">
+                                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="mailto:?subject=Exciting%20Job%20Opportunity&body=Checkout%20this%20exciting%20job%20opportunity%20at%20Strathmore%20University!%0D%0A%0D%0A{{ urlencode(route('job', $vacancy->slug)) }}">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
