@@ -437,7 +437,7 @@
                                                             {{ $workexperience->fromdate }}
                                                         </th>
                                                         <td class="px-6 py-4">
-                                                            {{ $academicinfo->todate }}
+                                                            {{ $academicinfo->todate ?? ''}}
                                                         </td>
                                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
                                                             <div class="flex justify-end">

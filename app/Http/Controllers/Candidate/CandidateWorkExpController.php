@@ -33,8 +33,8 @@ class CandidateWorkExpController extends Controller
         $validated = $request->validate([
             'user_id' => 'required',
             'jobtitle' => 'required',
-            'department' => 'required',
-            'companyname' => 'required',
+            'department' => 'required|max:255',
+            'companyname' => 'required|max:255',
             'country' => 'required',
             'specialization' => 'required',
             'currentemployer' => 'required|boolean',
